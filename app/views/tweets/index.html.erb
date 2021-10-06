@@ -1,5 +1,5 @@
 <div>
-  <h3>tweet</h3>
+  <h3>New Tweet</h3>
     <%= form_with model: @tweet, local:true do |f| %>
       <%= f.text_area :body %>
       <%= f.attachment_field :image %>
@@ -7,7 +7,7 @@
     <% end %>
   </div>
   <div>
-    <h2>Tweet</h2>
+    <h2>Tweets</h2>
     <% @tweets.each do |tweet| %>
       <%= link_to user_path(tweet.user) do %>
         <p><%= attachment_image_tag tweet.user, :profile_image_id, :fill, 40, 40, fallback: "no_image.jpg", size:'40x40' %></p>
@@ -15,7 +15,10 @@
       <% end %>
       <%= link_to tweet_path(tweet.id) do %>
         <p><%= tweet.body %></p>
-        <p><%= attachment_image_tag tweet, :image %></p>
+        <p><%= attachment_image_tag tweet, :image, :fill, 60, 60 %></p>
+      <% end %>
+      <% if tweet.user == current_user %>
+        <%= link_to "削除", tweet_path(tweet), method: :delete %>
       <% end %>
     <% end %>
   </div>

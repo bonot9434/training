@@ -1,1 +1,14 @@
-<h1>UserShow</h1>
+<div class="container">    
+  <div class="row">
+    <p><%= attachment_image_tag @user, :profile_image_id, :fill, 40, 40, fallback: "no_image.jpg", size:'40x40' %></p>
+    <p><%= @user.name %></p>
+    <p><%= @user.introduction %></p>
+    <p><%= @user.industry %></p>
+    <p><%= @user.give %></p>
+    <p><%= @user.take %></p>
+    <% @tweets.each do |tweet| %>
+      <p><%= tweet.body %></p>
+      <p><%= attachment_image_tag tweet, :image, :fill, 60, 60 %></p>
+    <% end %>
+  </div> 
+</div>
