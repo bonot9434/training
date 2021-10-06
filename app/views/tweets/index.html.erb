@@ -20,5 +20,10 @@
       <% if tweet.user == current_user %>
         <%= link_to "削除", tweet_path(tweet), method: :delete %>
       <% end %>
+      <div class="like-btn">
+        <div id="like_btn_<%= tweet.id %>">
+          <%= render "likes/like", tweet: tweet %>
+        </div>
+      </div>
     <% end %>
   </div>
