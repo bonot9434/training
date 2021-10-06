@@ -9,7 +9,13 @@
   <div>
     <h2>Tweet</h2>
     <% @tweets.each do |tweet| %>
-      <p><%= tweet.body %></p>
-      <p><%= attachment_image_tag tweet, :image %></p>
+      <%= link_to user_path(tweet.user) do %>
+        <p><%= attachment_image_tag tweet.user, :profile_image_id, :fill, 40, 40, fallback: "no_image.jpg", size:'40x40' %></p>
+        <p><%= tweet.user.name %></p>
+      <% end %>
+      <%= link_to tweet_path(tweet.id) do %>
+        <p><%= tweet.body %></p>
+        <p><%= attachment_image_tag tweet, :image %></p>
+      <% end %>
     <% end %>
   </div>
