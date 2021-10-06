@@ -1,0 +1,15 @@
+<div>
+  <h3>tweet</h3>
+    <%= form_with model: @tweet, local:true do |f| %>
+      <%= f.text_area :body %>
+      <%= f.attachment_field :image %>
+      <%= f.submit '投稿' , class: 'btn btn-success' %>
+    <% end %>
+  </div>
+  <div>
+    <h2>Tweet</h2>
+    <% @tweets.each do |tweet| %>
+      <p><%= tweet.body %></p>
+      <p><%= attachment_image_tag tweet, :image %></p>
+    <% end %>
+  </div>
