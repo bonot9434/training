@@ -25,9 +25,11 @@
 ビジネスの人脈を広げたい方  
 
 
+
 ### 主な利用シーン
 日頃の情報収集、営業活動のとき  
 ビジネスの幅を広げたいとき  
+
 
 
 ## チャレンジ要素一覧
@@ -35,7 +37,8 @@ https://docs.google.com/spreadsheets/d/1GdPTf0yaAhdzs2sYoUv20nlsJ8iFwZ0RAMPOlWqE
 
 
 ## 開発環境
-- OS：
+
+- OS：macOS
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
