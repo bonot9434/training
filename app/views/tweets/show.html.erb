@@ -1,1 +1,37 @@
-<h1>TweetShow</h1>
+<div class="container">
+  <%= link_to user_path(@tweet.user) do %>
+    <p><%= attachment_image_tag @tweet.user, :profile_image_id, :fill, 40, 40, fallback: "no_image.jpg", size:'40x40' %></p>
+    <p><%= @tweet.user.name %></p>
+  <% end %>
+  <%= link_to tweet_path(@tweet.id) do %>
+    <p><%= @tweet.body %></p>
+    <p><%= attachment_image_tag @tweet, :image, :fill, 60, 60 %></p>
+  <% end %>
+  <% if @tweet.user == current_user %>
+    <%= link_to "削除", tweet_path(@tweet), method: :delete %>
+  <% end %>
+  <div class="like-btn">
+    <div id="like_btn_<%= @tweet.id %>">
+      <%= render "likes/like", tweet: @tweet %>
+    </div>
+  </div>
+  <div>
+    <p>コメント数<% @tweet.comments.count %></p>
+    <% @tweet.comments.each do |comment| %>
+      <p><%= attachment_image_tag comment.user, :profile_image_id, :fill, 40, 40, fallback: "no_image.jpg", size:'40x40' %></p>
+      <%= comment.user.name %>
+      <%= comment.created_at.strftime('%Y/%m/%d') %>
+      <p><%= comment.comment %></p>
+      <% if comment.user == current_user %>
+        <%= link_to "削除", tweet_comment_path(comment.tweet, comment), method: :delete %>
+      <% end %>
+    <% end %>
+  </div>
+  <div>
+    <%= form_with(model:[@tweet,@comment], local: true) do|f| %>
+      <%= f.text_area :comment, rows:'5', placeholder: "ここにコメント" %>
+      <%= f.submit "送信" %>
+    <% end %>
+  </div>
+  </div>
+</div>
