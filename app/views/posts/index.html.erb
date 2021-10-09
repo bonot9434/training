@@ -1,0 +1,16 @@
+<div class="container">
+  <%= link_to "新規投稿", new_post_path %>
+  <div>
+    <h2>Post</h2>
+    <% @posts.each do |post| %>
+      <%= link_to user_path(post.user) do %>
+        <p><%= attachment_image_tag post.user, :profile_image_id, :fill, 40, 40, fallback: "no_image.jpg", size:'40x40' %>
+        <%= post.user.name %></p>
+      <% end %>
+      <%= link_to post_path(post.id) do %>
+        <p><%= post.body %></p>
+        <p><%= attachment_image_tag post, :image, :fill, 60, 60 %></p>
+      <% end %>
+    <% end %>
+  </div>
+</div>
