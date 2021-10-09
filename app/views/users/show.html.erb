@@ -27,7 +27,9 @@
           <th></th>
         </tr>
         <tr>
-          <th><%= link_to "プロフィール編集", edit_user_path(@user) %></th>
+          <% if @user == current_user %>
+            <th><%= link_to "プロフィール編集", edit_user_path(@user) %></th>
+          <% end %>
         </tr>
       </tbody>
     </table>
