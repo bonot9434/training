@@ -1,33 +1,42 @@
 <div class="container">
   <h2>PostShow</h2>
   <%= link_to user_path(@post.user) do %>
-    <p><%= attachment_image_tag @post.user, :profile_image_id, :fill, 40, 40, fallback: "no_image.jpg", size:'40x40' %>
+    <p><%= attachment_image_tag @post.user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size:'40x40' %>
     <%= @post.user.name %></p>
   <% end %>
   <%= @post.created_at.strftime('%Y/%m/%d') %>
   <p><%= @post.body %></p>
   <p><%= attachment_image_tag @post, :image, :fill, 60, 60 %></p>
+  <% if @post.liked_by?(current_user) %>
+    <%= link_to post_likes_path(@post), method: :delete do %>
+      <i class="fa fa-heart" aria-hidden="true" style="color: red;"><%= @post.likes.count %></i>
+      <!--area-hidden音声読み上げ-->
+    <% end %>
+  <% else %>
+    <%= link_to post_likes_path(@post), method: :post do %>
+      <i class="fa fa-heart" aria-hidden="true"><%= @post.likes.count %></i>
+    <% end %>
+  <% end %>
+  <p>コメント数:<%= @post.post_comments.count %></p>
   <% if @post.user == current_user %>
     <%= link_to "編集", edit_post_path(@post) %>
     <%= link_to "削除", post_path(@post), method: :delete %>
   <% end %>
-    <p>コメント数<% @post.post_comments.count %></p>
-    <div>
-      <%= form_with(model:[@post,@post_comment], local: true) do|f| %>
-        <%= f.text_area :comment, rows:'5', placeholder: "ここにコメント" %>
-        <%= f.submit "送信" %>
+  <div>
+    <%= form_with(model:[@post,@post_comment], local: true) do|f| %>
+      <%= f.text_area :comment, rows:'5', placeholder: "ここにコメント" %>
+      <%= f.submit "送信" %>
+    <% end %>
+  </div>
+  <div>
+    <% @post.post_comments.each do |post_comment| %>
+      <p><%= attachment_image_tag post_comment.user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size:'40x40' %>
+      <%= post_comment.user.name %></p>
+      <%= post_comment.created_at.strftime('%Y/%m/%d') %>
+      <p><%= post_comment.comment %></p>
+      <% if post_comment.user == current_user %>
+        <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
       <% end %>
-    </div>
-    <div>
-      <% @post.post_comments.each do |post_comment| %>
-        <p><%= attachment_image_tag post_comment.user, :profile_image_id, :fill, 40, 40, fallback: "no_image.jpg", size:'40x40' %>
-        <%= post_comment.user.name %></p>
-        <%= post_comment.created_at.strftime('%Y/%m/%d') %>
-        <p><%= post_comment.comment %></p>
-        <% if post_comment.user == current_user %>
-          <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
-        <% end %>
-      <% end %>
-    </div>
+    <% end %>
   </div>
 </div>
