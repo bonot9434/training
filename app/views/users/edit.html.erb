@@ -1,0 +1,20 @@
+<div class="container">
+  <h2>プロフィール編集</h2>
+  <div class="row">
+    <%= form_with model: @user, local:true do |f| %>
+      <div>
+        <%= f.label "Name" %>
+        <%= f.text_field :name %>
+      </div>
+      <div>
+        <%= f.label "Profile_image" %>
+        <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
+      </div>
+      <div>
+        <%= f.label "Introducion" %>
+        <%= f.text_area :introduction %>
+      </div>
+      <%= f.submit "Update User", class: 'btn btn-success' %>
+    <% end %>
+  </div>
+</div>
