@@ -3,6 +3,7 @@
   <div>
     <h2>Post</h2>
     <% @posts.each do |post| %>
+      <%= l post.created_at %>
       <%= link_to user_path(post.user) do %>
         <p><%= attachment_image_tag post.user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size:'40x40' %>
         <%= post.user.name %></p>
@@ -21,8 +22,8 @@
           <i class="fa fa-heart" aria-hidden="true"><%= post.likes.count %></i>
         <% end %>
       <% end %>
-      <div>タグ：<%= post.tags.map(&:name).join(',') %></div>
-      <p>コメント数:<%= post.post_comments.count %></p>
+      <div>コメント数:<%= post.post_comments.count %></div>
+      <div>タグ：<p class="badge badge badge-info"><%= post.tags.map(&:name).join(',') %></p></div>
     <% end %>
   </div>
 </div>

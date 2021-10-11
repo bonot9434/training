@@ -1,10 +1,10 @@
 <div class="container">
   <h2>PostShow</h2>
+  <%= l @post.created_at %>
   <%= link_to user_path(@post.user) do %>
     <p><%= attachment_image_tag @post.user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size:'40x40' %>
     <%= @post.user.name %></p>
   <% end %>
-  <%= @post.created_at.strftime('%Y/%m/%d') %>
   <p><%= @post.body %></p>
   <p><%= attachment_image_tag @post, :image, :fill, 60, 60 %></p>
   <% if @post.liked_by?(current_user) %>
@@ -18,10 +18,10 @@
     <% end %>
   <% end %>
   <p>コメント数:<%= @post.post_comments.count %></p>
-  <div>
-    タグ：
-    <% @post_tags.each do |tag| %>
-      <%= tag.name %>
+  <div class="badge badge badge-info">
+    タグ：<% @post_tags.each do |tag| %>
+      <%= link_to tag.name,search_tag_path(tag_id: tag.id)%>
+      <%="(#{tag.posts.count})" %>
     <% end %>
   </div>
   <% if @post.user == current_user %>
