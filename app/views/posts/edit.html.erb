@@ -6,6 +6,10 @@
       <%= f.text_field :body %>
     </div>
     <div>
+    <%= f.label"タグ" %>
+    <%= f.text_field :name,value: @tag_list %>
+    </div>
+    <div>
       <%= f.label "Image" %>
       <%= f.attachment_field :image, placeholder: "画像" %>
     </div>
@@ -13,6 +17,6 @@
   <% end %>
   <div>
     <%= link_to "削除", post_path(@post), method: :delete %>
-    <%= link_to "Back",posts_path %>
+    <%= link_to "戻る",posts_path %>
   </div>
 </div>

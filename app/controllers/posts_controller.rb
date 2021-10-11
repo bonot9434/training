@@ -8,29 +8,40 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @user = @post.user
     @post_comment = PostComment.new
+    @post_tags = @post.tags
   end
 
   def index
     @posts = Post.all
+    @tag_list = Tag.all
   end
 
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    @post.save
-    redirect_to posts_path
+    # タグを","で区切って配列
+    tag_list=params[:post][:name].split(',')
+    if @post.save
+      @post.save_tag(tag_list)
+      redirect_to posts_path(@post)
+    else
+      render:new
+    end
   end
   
   def edit
     @post = Post.find(params[:id])
+    @tag_list =@post.tags.pluck(:name).join(',')
   end
   
   def update
     @post = Post.find(params[:id])
+    tag_list=params[:post][:name].split(',')
     if @post.update(post_params)
-       redirect_to post_path(@post)
+       @post.save_tag(tag_list)
+       redirect_to post_path(@post.id)
     else
-       render:edit
+      render:edit
     end
   end
 
@@ -39,7 +50,8 @@ class PostsController < ApplicationController
     @post.destroy
     redirect_to posts_path
   end
-
+  
+  private
   def post_params
     params.require(:post).permit(:body, :image)
   end

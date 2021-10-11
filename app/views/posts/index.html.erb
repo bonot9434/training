@@ -21,6 +21,7 @@
           <i class="fa fa-heart" aria-hidden="true"><%= post.likes.count %></i>
         <% end %>
       <% end %>
+      <div>タグ：<%= post.tags.map(&:name).join(',') %></div>
       <p>コメント数:<%= post.post_comments.count %></p>
     <% end %>
   </div>
