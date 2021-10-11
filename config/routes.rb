@@ -11,5 +11,6 @@ Rails.application.routes.draw do
     resources :post_comments, only: [:create, :destroy]
     resource :likes, only: [:create, :destroy]
   end
-  get "search_tag"=>"posts#search_tag"
+  
+  get "search_tag"=>"searches#search_tag"
 end

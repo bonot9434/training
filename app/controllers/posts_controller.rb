@@ -13,14 +13,13 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
-    @tag_list = Tag.all
   end
 
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     # タグを","で区切って配列
-    tag_list=params[:post][:name].split(',')
+    tag_list = params[:post][:name].split(',')
     if @post.save
       @post.save_tag(tag_list)
       redirect_to posts_path(@post)
