@@ -7,9 +7,9 @@ Rails.application.routes.draw do
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
   end
-  
   resources :posts do
     resources :post_comments, only: [:create, :destroy]
     resource :likes, only: [:create, :destroy]
   end
+  get "search_tag"=>"posts#search_tag"
 end
