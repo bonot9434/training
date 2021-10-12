@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
-  
+
   def new
     @post = Post.new
   end
-  
+
   def show
     @post = Post.find(params[:id])
     @user = @post.user
@@ -12,7 +12,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.all.order(id: "DESC")
   end
 
   def create
@@ -27,12 +27,12 @@ class PostsController < ApplicationController
       render:new
     end
   end
-  
+
   def edit
     @post = Post.find(params[:id])
     @tag_list =@post.tags.pluck(:name).join(',')
   end
-  
+
   def update
     @post = Post.find(params[:id])
     tag_list=params[:post][:name].split(',')
@@ -49,10 +49,10 @@ class PostsController < ApplicationController
     @post.destroy
     redirect_to posts_path
   end
-  
+
   private
   def post_params
     params.require(:post).permit(:body, :image)
   end
-  
+
 end

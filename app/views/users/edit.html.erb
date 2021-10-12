@@ -15,6 +15,14 @@
         <%= f.text_area :introduction %>
       </div>
       <div>
+        <%= f.label "give" %>
+        <%= f.text_field :give %>
+      </div>
+      <div>
+        <%= f.label "take" %>
+        <%= f.text_field :take %>
+      </div>
+      <div>
         <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name %>
       </div>
       <%= f.submit "Update User", class: 'btn btn-success' %>
