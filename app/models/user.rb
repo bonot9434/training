@@ -15,6 +15,9 @@ class User < ApplicationRecord
   has_many :followers, through: :reverse_of_relationships, source: :follower
   # relationships(中間テーブル)を通してfollowedを参照→followings、一覧ページ作成のため
   has_many :followings, through: :relationships, source: :followed
+  
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :prefecture
 
   def follow(user_id)
     relationships.create(followed_id: user_id)

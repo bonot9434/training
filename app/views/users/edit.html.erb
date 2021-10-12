@@ -14,6 +14,9 @@
         <%= f.label "Introducion" %>
         <%= f.text_area :introduction %>
       </div>
+      <div>
+        <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name %>
+      </div>
       <%= f.submit "Update User", class: 'btn btn-success' %>
     <% end %>
   </div>
