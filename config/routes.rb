@@ -4,15 +4,19 @@ Rails.application.routes.draw do
   root to: 'homes#top'
    get "users_content" => "homes#users_content"
   resources :users do
+    member do
+      get :likes
+    end
     resource :relationships, only: [:create, :destroy]
-    get 'followings' => 'relationships#followings', as: 'followings'
-    get 'followers' => 'relationships#followers', as: 'followers'
+    get "followings" => "relationships#followings", as: "followings"
+    get "followers" => "relationships#followers", as: "followers"
   end
   resources :posts do
     resources :post_comments, only: [:create, :destroy]
     resource :likes, only: [:create, :destroy]
   end
-
+  
+  get "users/:id/likes" => "users#likes"
   get "search_tag" => "searches#search_tag"
   get "map" => "maps#map"
   get "map_show" => "maps#map_show"
