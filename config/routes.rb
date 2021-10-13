@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   end
   
   get "search_tag"=>"searches#search_tag"
+  get "map" => "maps#map"
+  get "maps/map_show"
 end
