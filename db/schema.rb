@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 2021_10_12_003618) do
     t.string "give"
     t.string "take"
     t.string "profile_image_id"
+    t.integer "industry_id", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "prefecture_id", default: 0

@@ -19,6 +19,8 @@ class User < ApplicationRecord
   
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
+  belongs_to_active_hash :industry
+  
 
   def follow(user_id)
     relationships.create(followed_id: user_id)
