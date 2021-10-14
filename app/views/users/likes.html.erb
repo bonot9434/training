@@ -1,0 +1,10 @@
+<div class="container">
+  <h2>いいね一覧</h2>
+  <div>
+    <% @like_posts.each do |post|%>
+      <p><%= attachment_image_tag post.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:'60×60' %>
+      <%= post.user.name %></p>
+      <p><%= post.body %></p>
+    <% end %>
+    </div>
+</div>

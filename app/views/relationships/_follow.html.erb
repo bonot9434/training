@@ -18,9 +18,18 @@
               <%= user.name %>
             <% end %>
           </td>
-          <td>業界</td>
-          <td>フォロー数: <%= user.followings.count %></td>
-          <td>フォロワー数: <%= user.followers.count %></td>
+          <td>
+            <%= user.give %>
+          </td>
+          <td>
+            <%= user.take %>
+          </td>
+          <td>
+            業界予定
+          </td>
+          <td>
+            <%= user.prefecture.name %>
+            </td>
         </tr>
       <% end %>
     </tbody>
