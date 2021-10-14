@@ -2,6 +2,7 @@
   <%= link_to "新規投稿", new_post_path %>
   <div>
     <h2>Post</h2>
+<<<<<<< Updated upstream
     <% @posts.each do |post| %>
       <%= l post.created_at %>
       <%= link_to user_path(post.user) do %>
@@ -25,5 +26,8 @@
       <div>コメント数:<%= post.post_comments.count %></div>
       <div>タグ：<p class="badge badge badge-info"><%= post.tags.map(&:name).join(',') %></p></div>
     <% end %>
+=======
+    <%= render 'posts/post', posts: @posts %>
+>>>>>>> Stashed changes
   </div>
 </div>

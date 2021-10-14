@@ -11,7 +11,10 @@ class LikesController < ApplicationController
     @post = Post.find(params[:post_id])
     like = @post.likes.find_by(user_id: current_user.id)
     like.destroy
+<<<<<<< Updated upstream
     redirect_to request.referer
+=======
+>>>>>>> Stashed changes
   end
   
 end

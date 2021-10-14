@@ -77,13 +77,13 @@
   <!--タブで選択された要素部分-->
   <div class="tabbox-contents">
     <div class="tabbox box-show">
-        
+      <%= render 'posts/post', posts: @posts %>
     </div>
     <div class="tabbox">
-        
+      <%= render 'posts/post', posts: @follow_post %>
     </div>
     <div class="tabbox">
-        
+      <%= render 'posts/post', posts: @user.like_posts %>
     </div>
   </div>
 </div>

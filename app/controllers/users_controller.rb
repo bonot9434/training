@@ -2,6 +2,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @posts = Post.where(user_id: @user.id)
+    @following = @user.followings.pluck(:id)
+    @follow_post = Post.where(user_id: @following)
   end
 
   def index
