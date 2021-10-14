@@ -25,6 +25,9 @@
       <div>
         <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name %>
       </div>
+      <div>
+        <%= f.collection_select :industry_id, Industry.all, :id, :name %>
+      </div>
       <%= f.submit "Update User", class: 'btn btn-success' %>
     <% end %>
   </div>

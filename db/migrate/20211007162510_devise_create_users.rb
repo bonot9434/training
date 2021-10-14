@@ -37,6 +37,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string "give"
       t.string "take"
       t.string "profile_image_id"
+      t.integer "industry_id", default: 0
 
 
       t.timestamps null: false
