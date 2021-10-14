@@ -35,7 +35,7 @@ class UsersController < ApplicationController
   end
 
   def sort_column
-    User.column_names.include?(params[:sort]) ? params[:sort] : 'prefecture_id'
+    User.column_names.include?(params[:sort]) ? params[:sort] : 'id'
   end
   
 

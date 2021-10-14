@@ -12,11 +12,20 @@ class RelationshipsController < ApplicationController
 
   def followings
     user = User.find(params[:user_id])
-    @users = user.followings
+    @users = user.followings.order("#{sort_column} #{sort_direction}")
   end
 
   def followers
     user = User.find(params[:user_id])
-    @users = user.followers
+    @users = user.followers.order("#{sort_column} #{sort_direction}")
   end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+  end
+
+  def sort_column
+    User.column_names.include?(params[:sort]) ? params[:sort] : 'id'
+  end
+
 end

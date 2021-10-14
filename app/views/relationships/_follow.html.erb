@@ -5,8 +5,8 @@
         <th>name</th>
         <th>Give</th>
         <th>Take</th>
-        <th>業界</th>
-        <th>勤務地</th>
+        <th><%= sort_order "industry_id", "業界" %></th>
+        <th><%= sort_order "prefecture_id", "勤務地" %></th>
       </tr>
     </thead>
     <tbody>
@@ -25,11 +25,11 @@
             <%= user.take %>
           </td>
           <td>
-            業界予定
+            <%= user.industry.name %>
           </td>
           <td>
             <%= user.prefecture.name %>
-            </td>
+          </td>
         </tr>
       <% end %>
     </tbody>
