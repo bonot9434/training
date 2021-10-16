@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resource :likes, only: [:create, :destroy]
   end
   
+  resources :notifications, only: [:index, :destroy]
   get "users/:id/likes" => "users#likes"
   get "search_tag" => "searches#search_tag"
   get "map" => "maps#map"
