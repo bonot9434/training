@@ -1,0 +1,13 @@
+<% visitor = notification.visitor %>
+<% post = notification.post %>
+<ul>
+  <li>
+    <%= link_to user_path(visitor) do %>
+      <strong><%= notification.visitor.name %></strong>
+    <% end %>さんが
+    <%= link_to post_path(notification.post_id) do %>
+      <strong><%= post.body.truncate(20)%></strong>
+    <% end %>にコメントしました。
+    <%= " (#{time_ago_in_words(notification.created_at)} 前)" %>
+  </li>
+</ul>
