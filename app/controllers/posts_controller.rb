@@ -13,6 +13,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all.order(id: "DESC")
+    @tag_list = Tag.all
   end
 
   def create

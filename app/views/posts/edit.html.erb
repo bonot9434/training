@@ -3,11 +3,11 @@
   <%= form_with model: @post, local:true do |f| %>
     <div>
       <%= f.label "Body" %>
-      <%= f.text_field :body %>
+      <%= f.text_area :body %>
     </div>
     <div>
     <%= f.label"タグ" %>
-    <%= f.text_field :name,value: @tag_list %>
+    <%= f.text_field :name,value: @tag_list, data: {role: "tagsinput"}%>
     </div>
     <div>
       <%= f.label "Image" %>
