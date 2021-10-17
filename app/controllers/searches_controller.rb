@@ -7,7 +7,7 @@ class SearchesController < ApplicationController
       @records = User.where('name LIKE ?', '%'+@content+'%')
     elsif @model == 'give'
       @records = User.where('give LIKE ?', '%'+@content+'%')
-    else @model == 'take'
+    elsif @model == 'take'
       @records = User.where('take LIKE ?', '%'+@content+'%')
     end
   end
