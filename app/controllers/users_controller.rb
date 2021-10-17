@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     @posts = Post.where(user_id: @user.id)
     @following = @user.followings.pluck(:id)
     @follow_post = Post.where(user_id: @following)
+    @tag_list = Tag.all
   end
 
   def index
