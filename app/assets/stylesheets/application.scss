@@ -1,0 +1,55 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap";
+@import "tagsinput";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+// footer{
+//   width: 100%;
+//   height: 50px;
+//   text-align: center;
+//   position: absolute;/*←絶対位置*/
+//   bottom: 0; /*下に固定*/
+// }
+
+// マイページタブ部分
+.tab {
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+  border: solid 1px #CCC;
+}
+// タブがactiveのときのデザイン
+.tab-active {
+  color: #FFF;
+  background: #696969;
+  transition: all 0.2s ease-in-out;
+}
+// タブの中身、最初は非表示
+.tabbox {
+  display: none;
+  padding: 15px;
+}
+// box-showクラスのものだけ表示
+.box-show {
+  display: block;
+}
+// hover時のアクション
+.tab:hover{
+  box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.5);
+  transform: translateY(-1px);
+}

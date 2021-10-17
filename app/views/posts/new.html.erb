@@ -1,0 +1,10 @@
+<div>
+  <h3>New Post</h3>
+    <%= form_with model: @post, local:true do |f| %>
+      <%= f.text_area :body %>
+      <%= f.text_field :name, data: {role: "tagsinput"}%>
+      <%= f.attachment_field :image %>
+      <%= f.submit '投稿' , class: 'btn btn-success' %>
+    <% end %>
+  </div>
+ 

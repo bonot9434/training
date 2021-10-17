@@ -1,0 +1,22 @@
+<div class="container">
+  <h2>PostEdit</h2>
+  <%= form_with model: @post, local:true do |f| %>
+    <div>
+      <%= f.label "Body" %>
+      <%= f.text_field :body %>
+    </div>
+    <div>
+    <%= f.label"タグ" %>
+    <%= f.text_field :name,value: @tag_list %>
+    </div>
+    <div>
+      <%= f.label "Image" %>
+      <%= f.attachment_field :image, placeholder: "画像" %>
+    </div>
+    <%= f.submit "Update User", class: 'btn btn-success' %>
+  <% end %>
+  <div>
+    <%= link_to "削除", post_path(@post), method: :delete %>
+    <%= link_to "戻る",posts_path %>
+  </div>
+</div>

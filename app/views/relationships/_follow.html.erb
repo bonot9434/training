@@ -1,0 +1,39 @@
+<% if users.exists? %>
+  <table class="table table-hover table-inverse">
+    <thead>
+      <tr>
+        <th>name</th>
+        <th>Give</th>
+        <th>Take</th>
+        <th><%= sort_order "industry_id", "業界" %></th>
+        <th><%= sort_order "prefecture_id", "勤務地" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% users.each do |user| %>
+        <tr>
+          <td>
+            <%= link_to user_path(user.id) do %>
+              <%= attachment_image_tag user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size:'40x40' %>
+              <%= user.name %>
+            <% end %>
+          </td>
+          <td>
+            <%= user.give %>
+          </td>
+          <td>
+            <%= user.take %>
+          </td>
+          <td>
+            <%= user.industry.name %>
+          </td>
+          <td>
+            <%= user.prefecture.name %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>ユーザーはいません</p>
+<% end %>

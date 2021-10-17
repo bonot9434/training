@@ -1,0 +1,40 @@
+<div class="container">
+  <h5>タグが<%=@tag.name.truncate(10) %>の投稿一覧</h5>
+  <!--タグリスト-->
+  <div class="row">
+    <table class="col-md-10">
+      <thead>
+        <th>投稿者</th>
+        <th>投稿内容</th>
+      </thead>
+      <% @tag_posts.each do |post| %>
+        <tbody>
+          <td>
+            <%= link_to user_path(post.user) do %>
+              <p><%= attachment_image_tag post.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:'60x60' %>
+              <%= post.user.name %></p>
+            <% end %>
+          </td>
+          <td>
+            <%=link_to post_path(post.id) do %>
+              <%= post.body.truncate(20) %>
+            <% end %>
+          <td>
+        </tbody>
+      <% end %>
+      </table>
+      <table class-"col-md-2">
+        <thead>
+          <th>タグ一覧</th>
+        </thead>
+        <% @tag_list.each do |list|%>
+          <tbody>
+            <td>
+              <%=link_to list.name.truncate(10),search_tag_path(tag_id: list.id) %>
+              <%="(#{list.posts.count})" %>
+            </td>
+          </tbody>
+        <% end %>
+      </table>
+  </div>
+</div>
