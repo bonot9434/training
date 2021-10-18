@@ -82,8 +82,8 @@
     <div class="tabbox">
       <%= render 'posts/post', posts: @follow_post %>
     </div>
-    <div class="tabbox">
-      <%= render 'posts/post', posts: @user.like_posts %>
+    <div class="tabbox" id="like_posts_list">
+      <%= render 'posts/post_like', posts: @like_post %>
     </div>
   </div>
 </div>

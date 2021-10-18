@@ -5,7 +5,9 @@ class UsersController < ApplicationController
     @posts = Post.where(user_id: @user.id)
     @following = @user.followings.pluck(:id)
     @follow_post = Post.where(user_id: @following)
-    @tag_list = Tag.all
+    #eachがnilにならないための記述
+    @likes = @user.like_posts.pluck(:id)
+    @like_post = Post.where(id: @likes)
   end
 
   def index
@@ -25,12 +27,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def likes
-    @user = User.find(params[:id])
-    likes = Like.where(user_id: @user.id).pluck(:post_id)
-    @like_posts = Post.find(likes)
-  end
-  
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
   end
@@ -38,7 +34,7 @@ class UsersController < ApplicationController
   def sort_column
     User.column_names.include?(params[:sort]) ? params[:sort] : 'id'
   end
-  
+
 
   private
 

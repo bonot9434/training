@@ -18,12 +18,10 @@
     <% end %>
   <% end %>
   <p>コメント数:<%= @post.post_comments.count %></p>
-  <div class="badge badge badge-info">
     タグ：<% @post_tags.each do |tag| %>
-      <%= link_to tag.name,search_tag_path(tag_id: tag.id)%>
-      <%="(#{tag.posts.count})" %>
+      <div class="badge badge badge-info"><%= link_to tag.name,search_tag_path(tag_id: tag.id)%>
+      <%="(#{tag.posts.count})" %></div>
     <% end %>
-  </div>
   <% if @post.user == current_user %>
     <%= link_to "編集", edit_post_path(@post) %>
   <% end %>
