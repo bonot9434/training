@@ -27,33 +27,5 @@ class RelationshipsController < ApplicationController
   def sort_column
     User.column_names.include?(params[:sort]) ? params[:sort] : 'id'
   end
-  
-  def followings_search
-    @user = User.find(params[:user_id])
-    @model = params[:model]
-    @content = params[:content]
-    if @model == 'user'
-      @users = @user.followings.where('name LIKE ?', '%'+@content+'%')
-    elsif @model == 'give'
-      @users = @user.followings.where('give LIKE ?', '%'+@content+'%')
-    elsif @model == 'take'
-      @users = @user.followings.where('take LIKE ?', '%'+@content+'%')
-    end
-    render :followings
-  end
-
-  def followers_search
-    @user = User.find(params[:user_id])
-    @model = params[:model]
-    @content = params[:content]
-    if @model == 'user'
-      @users = @user.followers.where('name LIKE ?', '%'+@content+'%')
-    elsif @model == 'give'
-      @users = @user.followers.where('give LIKE ?', '%'+@content+'%')
-    elsif @model == 'take'
-      @users = @user.followers.where('take LIKE ?', '%'+@content+'%')
-    end
-    render :followers
-  end
 
 end

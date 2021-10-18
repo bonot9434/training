@@ -1,15 +1,44 @@
 class SearchesController < ApplicationController
 
-  def search
+  def user_search
     @model=params[:model]
     @content=params[:content]
     if @model == 'user'
-      @records = User.where('name LIKE ?', '%'+@content+'%')
+      @users = User.where('name LIKE ?', '%'+@content+'%')
     elsif @model == 'give'
-      @records = User.where('give LIKE ?', '%'+@content+'%')
+      @users = User.where('give LIKE ?', '%'+@content+'%')
     elsif @model == 'take'
-      @records = User.where('take LIKE ?', '%'+@content+'%')
+      @users = User.where('take LIKE ?', '%'+@content+'%')
     end
+    render "users/index"
+  end
+  
+  def followings_search
+    @user = User.find(params[:user_id])
+    @model = params[:model]
+    @content = params[:content]
+    if @model == 'user'
+      @users = @user.followings.where('name LIKE ?', '%'+@content+'%')
+    elsif @model == 'give'
+      @users = @user.followings.where('give LIKE ?', '%'+@content+'%')
+    elsif @model == 'take'
+      @users = @user.followings.where('take LIKE ?', '%'+@content+'%')
+    end
+    render "relationships/followers"
+  end
+
+  def followers_search
+    @user = User.find(params[:user_id])
+    @model = params[:model]
+    @content = params[:content]
+    if @model == 'user'
+      @users = @user.followers.where('name LIKE ?', '%'+@content+'%')
+    elsif @model == 'give'
+      @users = @user.followers.where('give LIKE ?', '%'+@content+'%')
+    elsif @model == 'take'
+      @users = @user.followers.where('take LIKE ?', '%'+@content+'%')
+    end
+    render "relationships/followings"
   end
 
   def search_tag
