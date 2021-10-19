@@ -1,3 +1,31 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// マイページタブ部分
+.tab {
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+  border: solid 1px #CCC;
+}
+// タブがactiveのときのデザイン
+.tab-active {
+  color: #FFF;
+  background: #696969;
+  transition: all 0.2s ease-in-out;
+}
+// タブの中身、最初は非表示
+.tabbox {
+  display: none;
+  padding: 15px;
+}
+// box-showクラスのものだけ表示
+.box-show {
+  display: block;
+}
+// hover時のアクション
+.tab:hover{
+  box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.5);
+  transform: translateY(-1px);
+}
