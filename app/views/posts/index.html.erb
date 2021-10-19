@@ -1,7 +1,11 @@
 <div class="container">
   <%= link_to "新規投稿", new_post_path %>
-  <div>
-    <h2>Post</h2>
-    <%= render 'posts/post', posts: @posts %>
+  <div class="row">
+    <div class="col-2">
+      タグランキング
+    </div>
+    <div class="col-8">
+      <%= render 'posts/post', posts: @posts %>
+    </div>
   </div>
 </div>
