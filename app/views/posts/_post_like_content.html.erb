@@ -10,16 +10,12 @@
           <p><%= post.user.name %></p>
         <% end %>
       </div>
-      <div class="col-5 post">
+      <div class="col-5">
         <%= link_to post_path(post.id) do %>
-          <p><%= post.body %></p>
+          <p class="post"><%= post.body %></p>
           <p><%= attachment_image_tag post, :image, :fill, 200, 200 %></p>
         <% end %>
         <div>
-          タグ：
-          <% Tag.all.each do |list|%>
-            <div class="badge badge badge-info"><%=link_to list.name,search_tag_path(tag_id: list.id) %></div>
-          <% end %>
           <div class="d-flex">
             <div class="like-btn">
               <div class="like_btn_<%= post.id %>">
