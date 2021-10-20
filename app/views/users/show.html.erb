@@ -1,67 +1,67 @@
 <div class="container">
-  <h2>プロフィール</h2>
   <div class="row">
-    <table class="table">
-      <tbody>
+    <div class="offset-1">
+      <%= attachment_image_tag @user, :profile_image, :fill, 120, 120, fallback: "no_image.jpg", size:'120x120' %>
+      <% if @user == current_user %>
+        <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+      <% else %>
+        <div class="follow-btn">
+          <% if current_user.following?(@user) %>
+            <%= link_to "フォロー外す", user_relationships_path(@user.id), method: :delete, class: "btn btn-primary" %>
+          <% else %>
+            <%= link_to "フォローする", user_relationships_path(@user.id), method: :post, class: "btn btn-success" %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <table class="offset-1">
+      <thead>
         <tr>
-          <%= attachment_image_tag @user, :profile_image, :fill, 80, 80, fallback: "no_image.jpg", size:'80x80' %></p>
+          <th class="name"><%= @user.name %></th>
         </tr>
         <tr>
-          <th>name</th>
-          <th><%= @user.name %></th>
+          <th>
+            <%= link_to user_followings_path(@user) do %>
+              フォロー
+            <% end %>
+          </th>
+          <th class="pl-3"><%= @user.followings.count %></th>
         </tr>
         <tr>
-          <th>introduction</th>
-          <th><%= @user.introduction %></th>
+          <th>
+            <%= link_to user_followers_path(@user) do %>
+              フォロワー
+            <% end %>
+          </th>
+          <th class="pl-3"><%= @user.followers.count %></th>
         </tr>
         <tr>
           <th>業界</th>
-          <th><%= @user.industry.name %></th>
+          <th class="pl-3"><%= @user.industry.name %></th>
         </tr>
         <tr>
           <th>勤務地</th>
-          <th><%= @user.prefecture.name %></th>
+          <th class="pl-3"><%= @user.prefecture.name %></th>
         </tr>
-        <tr>
-          <th>Give</th>
-          <th><%= @user.give %></th>
-        </tr>
-        <tr>
-          <th>Take</th>
-          <th><%= @user.take %></th>
-        </tr>
-        <tr>
-          <th>follows:</th>
-          <th>
-            <%= link_to user_followings_path(@user) do %>
-              <%= @user.followings.count %>
-            <% end %>
-          </th>
-        </tr>
-        <tr>
-          <th>followers:</th>
-          <th>
-            <%= link_to user_followers_path(@user) do %>
-              <%= @user.followers.count %>
-            <% end %>
-          </th>
-        </tr>
-        <tr>
-          <% if @user == current_user %>
-            <th><%= link_to "プロフィール編集", edit_user_path(@user) %></th>
-          <% else %>
-            <td style="border:none;">
-              <% if current_user.following?(@user) %>
-                <%= link_to "フォロー外す", user_relationships_path(@user.id), method: :delete, class: "btn btn-primary" %>
-              <% else %>
-                <%= link_to "フォローする", user_relationships_path(@user.id), method: :post, class: "btn btn-success" %>
-              <% end %>
-            </td>
-          <% end %>
-        </tr>
-      </tbody>
+      </thead>
     </table>
   </div>
+  <table class="table col-10 offset-1 mt-4">
+    <thead>
+      <tr>
+        <th class="col-1 align-top">Give</th>
+        <th><%= @user.give %></th>
+      </tr>
+      <tr>
+        <th class="col-1 align-top">Take</th>
+        <th><%= @user.take %></th>
+      </tr>
+      <tr>
+        <th class="col-1 align-top">introduction</th>
+        <th><%= @user.introduction %></th>
+      </tr>
+    </thead>
+      </table>
   <!--マイページタブ部分-->
   <ul class="row tab-list list-unstyled">
     <li class="col-4 tab tab-active">
