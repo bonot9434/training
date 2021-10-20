@@ -13,7 +13,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all.order(id: "DESC")
-    @tag_list = Tag.all
+    @tag_rank = Tag.find(PostTag.group(:tag_id).order('count(tag_id) desc').limit(10).pluck(:tag_id))
   end
 
   def create

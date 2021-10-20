@@ -17,8 +17,8 @@
         <% end %>
         <div>
           タグ：
-          <% Tag.all.each do |list|%>
-            <div class="badge badge badge-info"><%=link_to list.name,search_tag_path(tag_id: list.id) %></div>
+          <% post.tags.each do |tag| %>
+            <%= link_to tag.name.truncate(10), search_tag_path(tag_id: tag.id) %>
           <% end %>
           <div class="d-flex">
             <div class="like-btn">
