@@ -24,7 +24,7 @@ class SearchesController < ApplicationController
     elsif @model == 'take'
       @users = @user.followings.where('take LIKE ?', '%'+@content+'%')
     end
-    render "relationships/followers"
+    render "relationships/followings"
   end
 
   def followers_search
@@ -38,7 +38,7 @@ class SearchesController < ApplicationController
     elsif @model == 'take'
       @users = @user.followers.where('take LIKE ?', '%'+@content+'%')
     end
-    render "relationships/followings"
+    render "relationships/followers"
   end
 
   def search_tag

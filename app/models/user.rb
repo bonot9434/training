@@ -18,11 +18,11 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
-  
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :industry
-  
+
 
   def follow(user_id)
     relationships.create(followed_id: user_id)
