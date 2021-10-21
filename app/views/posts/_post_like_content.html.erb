@@ -1,6 +1,6 @@
 <div id="post-<%=post.id%>">
-  <div class="border">
-    <div class="offset-2">
+  <div class="border mt-3">
+    <div class="offset-1">
       <%= l post.created_at %>
     </div>
     <div class="row">
@@ -19,7 +19,7 @@
           <% post.tags.each do |tag| %>
             <div><i class="fas fa-tag"></i><%= link_to tag.name.truncate(10), search_tag_path(tag_id: tag.id) %></div>
           <% end %>
-          <div class="d-flex mt-3">
+          <div class="d-flex">
             <div class="like-btn">
               <div class="like_btn_<%= post.id %>">
                 <%= render "likes/like", post: post %>

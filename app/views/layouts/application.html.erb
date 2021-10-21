@@ -7,7 +7,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body text="red">
+  <body>
     <header class="sticky-top">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
@@ -43,7 +43,7 @@
       <%= yield %>
     </main>
     <p id="pagetop"><a href="#"><span><i class="fas fa-caret-square-up"></i></span></a></p>
-    <footer>
+    <footer class="text-center  bg-dark">
       Give&Take
     </footer>
   </body>
