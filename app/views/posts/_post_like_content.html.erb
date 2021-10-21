@@ -10,12 +10,15 @@
           <p><%= post.user.name %></p>
         <% end %>
       </div>
-      <div class="col-5">
+      <div class="col-5 post">
         <%= link_to post_path(post.id) do %>
-          <p class="post"><%= post.body %></p>
+          <p><%= post.body %></p>
           <p><%= attachment_image_tag post, :image, :fill, 200, 200 %></p>
         <% end %>
         <div>
+          <% post.tags.each do |tag| %>
+            <div><i class="fas fa-tag"></i><%= link_to tag.name.truncate(10), search_tag_path(tag_id: tag.id) %></div>
+          <% end %>
           <div class="d-flex mt-3">
             <div class="like-btn">
               <div class="like_btn_<%= post.id %>">
