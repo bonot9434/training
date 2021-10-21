@@ -31,3 +31,12 @@ $(document).on('turbolinks:load', function() {
     });
   });
 });
+
+$('#pagetop').hide();
+ $(window).scroll(function () {
+  if ($(this).scrollTop() > 300) {
+   $('#pagetop').fadeIn();
+  } else {
+   $('#pagetop').fadeOut();
+  }
+});

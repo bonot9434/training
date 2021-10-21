@@ -2,7 +2,7 @@
   <div class="row">
     <div>
       <h4>通知</h4>
-      <p><%= link_to "全削除",notification_path(@notifications), method: :delete,class:"btn btn-light fas fa-trash" %></p>
+      <p><%= link_to "全削除",notification_path(@notifications), method: :delete,class: "btn btn-outline-secondary fas fa-trash" %></p>
       <% if @notifications.exists? %>
         <%= render @notifications %>
       <% else %>
