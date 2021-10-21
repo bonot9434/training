@@ -1,34 +1,24 @@
 <div class="container">
-  <h2>プロフィール編集</h2>
-  <div class="row">
+  <div class="col-6 offset-3">
+    <h1 class="mt-3">Edit</h1>
     <%= form_with model: @user, local:true do |f| %>
-      <div>
-        <%= f.label "Name" %>
-        <%= f.text_field :name %>
+      <div><%= f.label "Name" %></div>
+      <div><%= f.text_field :name, class: "col-6" %></div>
+      <div class="mt-2"><%= f.label "Icon" %></div>
+      <div><%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %></div>
+      <div class="mt-2"><%= f.label "Introducion" %></div>
+      <div><%= f.text_area :introduction, rows: "2" , class: "col-12" %></div>
+      <div class="mt-2"><%= f.label "Give" %></div>
+      <div><%= f.text_field :give, class: "col-12" %></div>
+      <div class="mt-2"><%= f.label "Take" %></div>
+      <div><%= f.text_field :take, class: "col-12" %></div>
+      <div class="mt-2"><%= f.label "勤務地", class: "col-3" %><div>
+      <div><%= f.collection_select :prefecture_id, Prefecture.all, :id, :name %><div>
+      <div class="mt-2"><%= f.label "業界", class: "col-3" %><div>
+      <div><%= f.collection_select :industry_id, Industry.all, :id, :name %><div>
+      <div class="mt-3">
+        <%= f.submit "編集完了", class: "btn btn-outline-secondary fas fa-edit col-6 offset-3" %>
       </div>
-      <div>
-        <%= f.label "Profile_image" %>
-        <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
-      </div>
-      <div>
-        <%= f.label "Introducion" %>
-        <%= f.text_area :introduction %>
-      </div>
-      <div>
-        <%= f.label "give" %>
-        <%= f.text_field :give %>
-      </div>
-      <div>
-        <%= f.label "take" %>
-        <%= f.text_field :take %>
-      </div>
-      <div>
-        <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name %>
-      </div>
-      <div>
-        <%= f.collection_select :industry_id, Industry.all, :id, :name %>
-      </div>
-      <%= f.submit "Update User", class: 'btn btn-success' %>
     <% end %>
   </div>
 </div>
