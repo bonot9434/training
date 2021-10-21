@@ -1,4 +1,5 @@
 <div class="container">
+  <div class="col-8 offset-2">
   <div class="border mt-3">
     <div class="offset-1"><%= l @post.created_at %></div>
     <div class="row">
@@ -8,14 +9,14 @@
           <p><%= @post.user.name %></p>
         <% end %>
       </div>
-      <div class="col-5">
-        <p class="post"><%= @post.body %></p>
+      <div class="col-5 post">
+        <p><%= @post.body %></p>
         <p><%= attachment_image_tag @post, :image, :fill, 200, 200 %></p>
         <div>
           <% @post_tags.each do |tag| %>
           <div><i class="fas fa-tag"></i><%= link_to tag.name,search_tag_path(tag_id: tag.id)%></div>
           <% end %>
-          <div class="d-flex mt-3">
+          <div class="d-flex">
             <div class="like-btn">
               <div class="like_btn_<%= @post.id %>">
                 <%= render "likes/like", post: @post %>
@@ -34,7 +35,7 @@
       </div>
     </div>
   </div>
-  <div class="offset-4 mt-3 mb-3">
+  <div class="offset-3 mt-3 mb-3">
     <%= form_with(model:[@post,@post_comment], local: true) do|f| %>
       <div><%= f.text_area :comment, rows: "5", cols: "40", placeholder: "ここに入力" %></div>
         <%= f.submit "コメント", class: "btn btn-outline-secondary fas fa-pen" %>
@@ -57,4 +58,5 @@
       </div>
     </div>
   <% end %>
+</div>
 </div>

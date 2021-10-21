@@ -19,6 +19,16 @@
 @import 'font-awesome';
 
 
+body {
+ display: flex;
+ flex-direction: column;
+ min-height: 100vh;
+}
+
+main {
+ margin-bottom: auto;
+}
+
 #pagetop {
  display: inline-block;
  position: fixed;
@@ -34,3 +44,8 @@
  text-align: center;
 }
 
+footer {
+ color: white;
+ weight: 100%;
+ padding: 2%;
+}
