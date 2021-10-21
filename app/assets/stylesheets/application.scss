@@ -17,3 +17,20 @@
 @import "tagsinput";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+
+#pagetop {
+ display: inline-block;
+ position: fixed;
+ bottom: 2%;
+ right: 2%;
+}
+
+#pagetop a {
+ padding: 10px 10px;
+ display: block;
+ background:#008b8b;
+ color:#fff;
+ text-align: center;
+}
+
