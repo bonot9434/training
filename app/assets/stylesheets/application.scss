@@ -34,3 +34,16 @@ footer {
  weight: 100%;
  padding: 2%;
 }
+
+#page_top {
+  width: 50px;
+  height: 10px;
+  position: fixed;
+  right: 50px;
+}
+
+#page_top i::before{
+  font-weight: 900;
+  font-size: 50px;
+  color: #6495ed;
+}
