@@ -18,6 +18,9 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+  has_many :room_users
+  has_many :rooms, through: :room_users
+  has_many :messages
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
@@ -34,4 +37,13 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
+  def get_dm_users
+    room_ids = self.rooms.ids #ユーザーのルームの一覧取得
+    user_ids = RoomUser.where(room_id: room_ids).where.not(user_id: self.id).pluck('user_id') #取得したユーザーの中で自分以外のIDを取得
+    User.where(id: user_ids) #上でIDのみ取得しているため、ユーザー情報を全て返す　eachで使用できる
+  end
+
+  def get_room_id(users)
+    (self.rooms.ids & users.rooms.ids).first #[1,2] & [2] => [1] #ログインユーザーのルームIDと他のユーザーが持つルームIDが同じもの
+  end
 end

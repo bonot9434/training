@@ -20,3 +20,32 @@
   text-decoration: none;
   color: #6495ed;
 }
+
+// 新規投稿
+.fbtn {
+  font-family: "Font Awesome 5 Free";
+}
+
+.postbtn {
+  font-size: 3em;
+  position: fixed;
+  right: 50px;
+  top: 100px;
+  text-decoration: none;
+  color: #6495ed;
+}
+
+#page_top {
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  right: 50px;
+}
+
+#page_top i::before{
+  font-weight: 900;
+  font-size: 50px;
+  color: #6495ed;
+  position: absolute;
+  top: -10px;
+}
