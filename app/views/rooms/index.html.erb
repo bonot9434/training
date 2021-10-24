@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <h3>DMユーザー一覧</h3>
+      <% @dm_users.each do |dmuser| %>
+        <%= link_to room_path(current_user.get_room_id(dmuser)) do %>
+          <div><%= dmuser.name %></div>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-9">
+      <h3>メッセージ内容</h3>
+      左記より選択してください。
+    </div>
+  </div>
+</div>

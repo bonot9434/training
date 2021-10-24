@@ -5,9 +5,14 @@ class UsersController < ApplicationController
     @posts = Post.where(user_id: @user.id)
     @following = @user.followings.pluck(:id)
     @follow_post = Post.where(user_id: @following)
-    #eachがnilにならないための記述
-    @likes = @user.like_posts.pluck(:id)
+    @likes = @user.like_posts.pluck(:id) #eachがnilにならないための記述
     @like_post = Post.where(id: @likes)
+    @receiveUser = User.find(@user.id) #DM機能
+    @roomId = current_user.get_room_id(@receiveUser)
+      if @roomId.blank?
+         @room = Room.new
+         @RoomUser = RoomUser.new
+      end
   end
 
   def index

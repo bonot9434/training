@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <h3>DMユーザー一覧</h3>
+      <% @dm_users.each do |dmuser| %>
+        <%= link_to room_path(current_user.get_room_id(dmuser)) do %>
+          <div><%= dmuser.name %></div>
+        <% end %>
+      <% end %>
+    </div>
+    <hr>
+    <% if @room.present? %>
+    <div class="col-9">
+      <h3>メッセージ内容</h3>
+      <% if @messages.present? %>
+        <% @messages.each do |m| %>
+          <div>
+            <%= m.message %>
+            <%= l m.created_at %>
+          </div>
+        <% end %>
+      <%else%>
+        <p>メッセージはまだありません</p>
+      <% end %>
+      <%= form_with model: @message, local: true do |f| %>
+        <%= f.text_field :message, placeholder: "メッセージを入力してください" %>
+        <%= f.hidden_field :room_id, value: @room.id %>
+        <%= f.submit "送信する" %>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+</div>

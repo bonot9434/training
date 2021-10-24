@@ -19,7 +19,6 @@
 //= require turbolinks
 //= require_tree .
 
-/* global $ */
 $(document).on('turbolinks:load', function() {
   $(function() {
     $('.tab').click(function(){
@@ -30,13 +29,5 @@ $(document).on('turbolinks:load', function() {
       $('.tabbox').eq(index).addClass('box-show');
     });
   });
-});
+}); 
 
-$('#pagetop').hide();
- $(window).scroll(function () {
-  if ($(this).scrollTop() > 300) {
-   $('#pagetop').fadeIn();
-  } else {
-   $('#pagetop').fadeOut();
-  }
-});
