@@ -34,17 +34,13 @@
         </tr>
         <tr>
           <th>
-            <%= link_to user_followings_path(@user) do %>
-              フォロー
-            <% end %>
+            <%= link_to "フォロー", user_followings_path(@user) %>
           </th>
           <th class="pl-3"><%= @user.followings.count %></th>
         </tr>
         <tr>
           <th>
-            <%= link_to user_followers_path(@user) do %>
-              フォロワー
-            <% end %>
+            <%= link_to "フォロワー",user_followers_path(@user) %>
           </th>
           <th class="pl-3"><%= @user.followers.count %></th>
         </tr>
@@ -53,7 +49,7 @@
           <th class="pl-3"><%= @user.industry.name %></th>
         </tr>
         <tr>
-          <th>勤務地</th>
+          <th><%= link_to "勤務地", map_path %></th>
           <th class="pl-3"><%= @user.prefecture.name %></th>
         </tr>
       </thead>
@@ -77,25 +73,25 @@
   </table>
   <!--マイページタブ部分-->
   <ul class="row tab-list list-unstyled">
-    <li class="col-4 tab tab-active">
+    <li class="col-4 tab tab-active text-center">
       my post
     </li>
-    <li class="col-4 tab">
+    <li class="col-4 tab text-center">
       follower post
     </li>
-    <li class="col-4 tab">
+    <li class="col-4 tab text-center">
       like post
     </li>
   </ul>
   <!--タブで選択された要素部分-->
   <div class="tabbox-contents">
-    <div class="tabbox box-show">
+    <div class="col-8 offset-2 tabbox box-show">
       <%= render 'posts/post', posts: @posts %>
     </div>
-    <div class="tabbox">
+    <div class="col-8 offset-2 tabbox">
       <%= render 'posts/post', posts: @follow_post %>
     </div>
-    <div class="tabbox" id="like_posts_list">
+    <div class="col-8 offset-2 tabbox" id="like_posts_list">
       <%= render 'posts/post_like', posts: @like_post %>
     </div>
   </div>

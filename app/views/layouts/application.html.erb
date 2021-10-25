@@ -15,23 +15,24 @@
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
+          <%= current_user.name %>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <% if user_signed_in? %>
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
-                <%= link_to 'Home', user_path(current_user.id), class: 'nav-link text-light' %>
+                <%= link_to 'MyPage', user_path(current_user.id), class: 'nav-link text-light' %>
               </li>
               <li class="nav-item">
-                <%= link_to 'Users', users_content_path, class: 'nav-link text-light' %>
+                <%= link_to 'Users', users_path, class: 'nav-link text-light' %>
               </li>
               <li class="nav-item">
                 <%= link_to 'Posts', posts_path, class: 'nav-link text-light' %>
               </li>
               <li class="nav-item">
-                <%= link_to "logout", destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
+                <%= link_to "Notice",notifications_path, class: 'nav-link text-light' %>
               </li>
               <li class="nav-item">
-                <%= link_to "Notice",notifications_path, class: 'nav-link text-light' %>
+                <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
               </li>
             </ul>
             <% end %>
