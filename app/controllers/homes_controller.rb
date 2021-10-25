@@ -4,7 +4,4 @@ class HomesController < ApplicationController
     render 'top', layout: nil
   end
   
-  def users_content
-  end
-  
 end

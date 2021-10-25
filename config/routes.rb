@@ -17,11 +17,10 @@ Rails.application.routes.draw do
   end
 
   resources :notifications, only: [:index, :destroy]
-  
+
   resources :rooms
   resources :messages
 
-  get "users_content" => "homes#users_content"
   get "users/:id/likes" => "users#likes"
   get "user_search" => "searches#user_search"
   get "search_tag" => "searches#search_tag"
