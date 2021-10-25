@@ -21,6 +21,12 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
     # タグを","で区切って配列
     tag_list = params[:post][:name].split(',')
+    if params[:post][:give] == "1"
+      tag_list.push('Give')
+    end
+    if params[:post][:take] == "1"
+      tag_list.push('Take')
+    end
     if @post.save
       @post.save_tag(tag_list)
       redirect_to posts_path(@post)

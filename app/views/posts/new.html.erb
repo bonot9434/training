@@ -5,6 +5,12 @@
       <div class="mt-2"><%= f.label "本文" %></div>
       <div><%= f.text_area :body, rows: "4", class: "col-12" %></div>
       <div><%= f.label"タグ" %></div>
+      <div>
+        <%= f.check_box :give %>
+        <%= f.label :give %>
+        <%= f.check_box :take %>
+            <%= f.label :take %>
+      </div>
       <div><%= f.text_field :name, data: {role: "tagsinput"}%></div>
       <div class="mt-2"><%= f.label "画像" %></div>
       <div><%= f.attachment_field :image %></div>
