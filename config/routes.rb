@@ -26,4 +26,6 @@ Rails.application.routes.draw do
   get "search_tag" => "searches#search_tag"
   get "map" => "maps#map"
   get "map_show" => "maps#map_show"
+  get "industry" => "industries#industry"
+  get "industry_show" => "industries#industry_show"
 end

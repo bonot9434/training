@@ -12,7 +12,7 @@
     <% end %>
   <% end %>
   <div class="row">
-    <div class="offset-1">
+    <div class="col-2 offset-1 p-3">
       <%= attachment_image_tag @user, :profile_image, :fill, 120, 120, fallback: "no_image.jpg", size:'120x120' %>
       <% if @user == current_user %>
         <p><%= link_to "DM一覧", rooms_path %></p>
@@ -27,33 +27,25 @@
         </div>
       <% end %>
     </div>
-    <table class="offset-1">
-      <thead>
-        <tr>
-          <th class="name"><%= @user.name %></th>
-        </tr>
-        <tr>
-          <th>
-            <%= link_to "フォロー", user_followings_path(@user) %>
-          </th>
-          <th class="pl-3"><%= @user.followings.count %></th>
-        </tr>
-        <tr>
-          <th>
-            <%= link_to "フォロワー",user_followers_path(@user) %>
-          </th>
-          <th class="pl-3"><%= @user.followers.count %></th>
-        </tr>
-        <tr>
-          <th>業界</th>
-          <th class="pl-3"><%= @user.industry.name %></th>
-        </tr>
-        <tr>
-          <th><%= link_to "勤務地", map_path %></th>
-          <th class="pl-3"><%= @user.prefecture.name %></th>
-        </tr>
-      </thead>
-    </table>
+    <div class="col-8 offset-1">
+      <div class="pt-3 pb-5 name"><strong><%= @user.name %></strong></div>
+      <div class="d-flex">
+        <p class="col-3"><%= link_to "フォロー", user_followings_path(@user) %></p>
+        <p><%= @user.followings.count %></p>
+      </div>
+      <div class="d-flex">
+        <p class="col-3"><%= link_to "フォロワー",user_followers_path(@user) %></p>
+        <p><%= @user.followers.count %></p>
+      </div>
+      <div class="d-flex">
+        <p class="col-3"><%= link_to "業界", industry_path %></p>
+        <p><%= @user.industry.name %></p>
+      </div>
+      <div class="d-flex">
+        <p class="col-3"><%= link_to "勤務地", map_path %></p>
+        <p><%= @user.prefecture.name %></p>
+      </div>
+    </div>
   </div>
   <table class="table col-10 offset-1 mt-4">
     <thead>
@@ -74,13 +66,13 @@
   <!--マイページタブ部分-->
   <ul class="row tab-list list-unstyled">
     <li class="col-4 tab tab-active text-center">
-      my post
+      My Post
     </li>
     <li class="col-4 tab text-center">
-      follower post
+      Follower Post
     </li>
     <li class="col-4 tab text-center">
-      like post
+      Like Post
     </li>
   </ul>
   <!--タブで選択された要素部分-->
