@@ -2,10 +2,10 @@
   <thead>
     <tr>
       <th class="col-2">name</th>
-      <th class="col-2">Give</th>
-      <th class="col-2">Take</th>
-      <th class="col-2"><%= sort_order "industry_id", "業界" %></th>
-      <th class="col-2"><%= sort_order "prefecture_id", "勤務地" %></th>
+      <th class="col-3">Give</th>
+      <th class="col-3">Take</th>
+      <th class="col-1"><%= sort_order "industry_id", "業界" %></th>
+      <th class="col-1"><%= sort_order "prefecture_id", "勤務地" %></th>
     </tr>
   </thead>
   <tbody>
@@ -13,8 +13,8 @@
       <tr>
         <td>
           <%= link_to user_path(user) do %>
-            <p><%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:'60×60' %>
-            <%= user.name %></p>
+            <p><%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:'60×60' %></p>
+            <p><%= user.name %></p>
           <% end %>
         </td>
         <td>
