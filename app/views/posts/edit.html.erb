@@ -20,8 +20,8 @@
       </script>
       <div><%= f.check_box :remove_image %>画像を削除する</div>
       <div class="mt-5">
-        <%= f.submit "編集完了", class: "btn btn-outline-secondary fas fa-edit offset-3"  %>
-        <%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-outline-secondary fas fa-trash offset-2" %>
+        <%= f.submit "編集完了", class: "btn btn-outline-success fas fa-edit offset-3"  %>
+        <%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-outline-danger fas fa-trash offset-2" %>
       </div>
     <% end %>
   </div>

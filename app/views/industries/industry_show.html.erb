@@ -2,7 +2,41 @@
   <h2 class="col-4 mt-3">ユーザー一覧</h2>
   <div class="mt-3">
     <% if @users.exists? %>
-      <%= render 'users/user', users: @users %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="col-2">Name</th>
+            <th class="col-3">Give</th>
+            <th class="col-3">Take</th>
+            <th class="col-2">業界</th>
+            <th class="col-2">勤務地</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td>
+                <%= link_to user_path(user) do %>
+                  <p><%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:'60×60' %></p>
+                  <p><%= user.name %></p>
+                <% end %>
+              </td>
+              <td>
+                <%= user.give %>
+              </td>
+              <td>
+                <%= user.take %>
+              </td>
+              <td>
+                <%= user.industry.name %>
+              </td>
+              <td>
+                <%= user.prefecture.name %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     <% else %>
       <div>ユーザーはいません</div>
       <% end %>

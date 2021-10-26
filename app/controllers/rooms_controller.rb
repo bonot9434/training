@@ -1,4 +1,5 @@
 class RoomsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @dm_users = current_user.get_dm_users

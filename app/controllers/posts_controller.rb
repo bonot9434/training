@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, except: [:show, :index]
+  before_action :identification, only: [:edit]
 
   def new
     @post = Post.new
@@ -14,7 +16,6 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all.order(id: "DESC")
     @tag_rank = Tag.find(PostTag.group(:tag_id).order('count(tag_id) desc').limit(10).pluck(:tag_id))
-    # @tag = Tag.where(name: "Give")
   end
 
   def create
@@ -59,6 +60,14 @@ class PostsController < ApplicationController
   end
 
   private
+  
+  def identification
+    post = Post.find(params[:id])
+    if post.user_id != current_user.id
+      redirect_to posts_path
+    end
+  end
+  
   def post_params
     params.require(:post).permit(:body, :image)
   end

@@ -1,5 +1,4 @@
 class SearchesController < ApplicationController
-
   def user_search
     @model=params[:model]
     @content=params[:content]
