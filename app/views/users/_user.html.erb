@@ -13,7 +13,7 @@
       <tr>
         <td>
           <%= link_to user_path(user) do %>
-            <p><%= attachment_image_tag user, :profile_image, :fill, 20, 20, fallback: "no_image.jpg", size:'20×20' %></p>
+            <p><%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:'60×60' %></p>
             <p><%= user.name %></p>
           <% end %>
         </td>
