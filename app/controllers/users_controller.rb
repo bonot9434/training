@@ -11,10 +11,10 @@ class UsersController < ApplicationController
     @like_post = Post.where(id: @likes)
     @receiveUser = User.find(@user.id) #DM機能
     @roomId = current_user.get_room_id(@receiveUser)
-      if @roomId.blank?
-         @room = Room.new
-         @RoomUser = RoomUser.new
-      end
+    if @roomId.blank?
+      @room = Room.new
+      @RoomUser = RoomUser.new
+    end
   end
 
   def index
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
 
 
   private
-  
+
   def identification
     user = User.find(params[:id])
     if user != current_user

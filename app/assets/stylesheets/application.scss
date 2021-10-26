@@ -18,6 +18,20 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+// ハンバーガーメニュー
+.navbar-light .navbar-toggler {
+ border-color: rgba(0,0,0,0);
+}
+
+.navbar-light .navbar-toggler-icon{
+  /* 三本線 */
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 255)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='3' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+header {
+ background-color: #1e50a2;
+}
+
 // 全体に表示
 body {
  display: flex;
@@ -31,6 +45,7 @@ main {
 
 footer {
  color: white;
+ background-color: #1e50a2;
  weight: 100%;
  padding: 2%;
 }
@@ -46,5 +61,5 @@ footer {
 #page_top i::before{
  font-weight: 900;
  font-size: 50px;
- color: #6495ed;
+ color: #1e50a2;
 }

@@ -9,7 +9,7 @@
           <p><%= attachment_image_tag post.user, :profile_image, :fill, 80, 80, fallback: "no_image.jpg", size:'80x80' %></p>
         <% end %>
       </div>
-      <div class="col-7">
+      <div class="col-6 offset-1">
         <p><%= post.user.name %></p>
         <%= link_to post_path(post.id) do %>
           <p class="post"><%= post.body %></p>
