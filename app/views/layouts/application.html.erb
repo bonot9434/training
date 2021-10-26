@@ -31,7 +31,11 @@
                 <%= link_to 'Posts', posts_path, class: 'nav-link text-light' %>
               </li>
               <li class="nav-item text-center">
-                <%= link_to "Notice",notifications_path, class: 'nav-link text-light' %>
+                <% if unchecked_notifications.any? %>
+                  <%= link_to "Notice",notifications_path, class: 'nav-link text-light fas fa-bell' %>
+                <% else %>
+                  <%= link_to "Notice",notifications_path, class: 'nav-link text-light' %>
+                <% end %>
               </li>
               <li class="nav-item text-center">
                 <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
