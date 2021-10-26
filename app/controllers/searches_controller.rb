@@ -1,4 +1,5 @@
 class SearchesController < ApplicationController
+
   def user_search
     @model=params[:model]
     @content=params[:content]
@@ -11,7 +12,7 @@ class SearchesController < ApplicationController
     end
     render "users/index"
   end
-  
+
   def followings_search
     @user = User.find(params[:user_id])
     @model = params[:model]
