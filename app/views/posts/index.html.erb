@@ -9,7 +9,7 @@
       <% end %>
     </div>
     <div class="col-8">
-      <%= render 'posts/post', posts: @posts %>
+      <%= render 'posts/post', posts: @posts,current_user_like_list: @current_user_like_list %>
     </div>
   </div>
 </div>

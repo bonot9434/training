@@ -9,8 +9,8 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @user = @post.user
+    # @post_tags = @post.tags
     @post_comment = PostComment.new
-    @post_tags = @post.tags
   end
 
   def index
@@ -60,14 +60,14 @@ class PostsController < ApplicationController
   end
 
   private
-  
+
   def identification
     post = Post.find(params[:id])
     if post.user_id != current_user.id
       redirect_to posts_path
     end
   end
-  
+
   def post_params
     params.require(:post).permit(:body, :image)
   end
