@@ -3,9 +3,9 @@
     <h1 class="mt-3">Edit</h1>
     <%= form_with model: @post, local:true do |f| %>
       <div class="mt-2"><%= f.label "本文" %></div>
-      <div><%= f.text_area :body, rows: "4" , class: "col-12" %></div>
+      <div><%= f.text_area :body, rows: "4", required: true, class: "col-12" %></div>
       <div><%= f.label"タグ" %></div>
-      <div><%= f.text_field :name,value: @tag_list, data: {role: "tagsinput"}%></div>
+      <div><%= f.text_field :name, value: @tag_list, data: {role: "tagsinput"}%></div>
       <div class="mt-2"><%= f.label "画像" %></div>
       <div><%= f.attachment_field :image %></div>
       <img id="preview" style="width:40%;">

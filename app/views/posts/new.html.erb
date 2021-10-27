@@ -3,7 +3,7 @@
     <h1 class="mt-3">New</h1>
     <%= form_with model: @post, local:true do |f| %>
       <div class="mt-2"><%= f.label "本文" %></div>
-      <div><%= f.text_area :body, rows: "4", class: "col-12" %></div>
+      <div><%= f.text_area :body, rows: "4", required: true, class: "col-12" %></div>
       <div><%= f.label"タグ" %></div>
       <div>
         <%= f.check_box :give %>

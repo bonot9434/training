@@ -2,88 +2,30 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// ホーム画面タイトル
-.top {
-  background: linear-gradient(to right, #6495ed 0%, #6495ed 50%, #ffffff 50%, #ffffff 100%);
-}
 
 .title {
+  font-size: 60px;
+  font-family: arial black;
+  text-align: center;
+  padding: 2%;
+}
+
+.top {
+  font-size: 20px;
+  text-align: center;
+  line-height: 2.5rem;
+}
+
+.top-btn {
   display: flex;
-  top: 20%;
-  left: 50%;
-  margin: 0;
-  transform: translate(-50%, -50%);
-  position: absolute;
-  font-weight: bold;
+  justify-content: center;
+  padding: 3%;
 }
 
-.title-give {
-  font-size: 80px;
-  color: #ffffff;
+.btn-up {
+  padding-right: 5%;
 }
 
-.title-take {
-  font-size: 80px;
-  color: #6495ed;
-}
-
-.title-half {
-  position: relative;
-  display: inline-block;
-  font-size: 80px;
-  overflow: hidden;
-  white-space: pre;
-  color: #6495ed;
-}
-
-.title-half:before {
-  display: block;
-  z-index: 1;
-  position: absolute;
-  top: 0;
-  width: 50%;
-  content: attr(data-content);
-  pointer-events: none;
-  overflow: hidden;
-  color: #ffffff;
-}
-
-// .topbtn {
-//   font-size: 1.6rem;
-//   font-weight: 700;
-//   line-height: 1.5;
-//   position: relative;
-//   display: inline-block;
-//   padding: 1rem 4rem;
-//   cursor: pointer;
-//   -webkit-user-select: none;
-//   -moz-user-select: none;
-//   -ms-user-select: none;
-//   user-select: none;
-//   -webkit-transition: all 0.3s;
-//   transition: all 0.3s;
-//   text-align: center;
-//   vertical-align: middle;
-//   text-decoration: none;
-//   letter-spacing: 0.1em;
-//   color: #212529;
-//   border-radius: 0.5rem;
-// }
-
-.topbtn-up,
-.topbtn-in {
-  font-size: 30px;
-  border: 2px solid #ffffff;
-  border-radius: 0;
-  color: #ffffff;
-  background: #000000;
-  text-decoration: none;
-  padding: 3rem;
-}
-
-.topbtn-up:hover,
-.topbtn-in:hover {
-  color: #000000;
-  background: #ffffff;
-  text-decoration: none;
+.btn-in {
+  padding-left: 5%;
 }

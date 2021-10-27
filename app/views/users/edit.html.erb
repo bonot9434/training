@@ -3,7 +3,7 @@
     <h1 class="mt-3">Edit</h1>
     <%= form_with model: @user, local:true do |f| %>
       <div><%= f.label "Name" %></div>
-      <div><%= f.text_field :name, class: "col-6" %></div>
+      <div><%= f.text_field :name, required: true, class: "col-6" %></div>
       <div class="mt-2"><%= f.label "Icon" %></div>
       <div><%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %></div>
       <div class="mt-2"><%= f.label "Introducion" %></div>
