@@ -1,3 +1,38 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// 投稿一覧
+.post {
+  text-align: justify;
+  overflow-wrap: break-word;
+}
+
+// 新規投稿
+.fbtn {
+  font-family: "Font Awesome 5 Free";
+}
+
+.postbtn {
+  font-size: 3em;
+  position: fixed;
+  right: 50px;
+  top: 100px;
+  text-decoration: none;
+  color: #1e50a2;
+}
+
+// 新規投稿
+.fbtn {
+  font-family: "Font Awesome 5 Free";
+}
+
+.postbtn {
+  font-size: 3em;
+  position: fixed;
+  right: 50px;
+  top: 100px;
+  text-decoration: none;
+  color: #1e50a2;
+}
+

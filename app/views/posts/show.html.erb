@@ -1,48 +1,62 @@
 <div class="container">
-  <h2>PostShow</h2>
-  <%= l @post.created_at %>
-  <%= link_to user_path(@post.user) do %>
-    <p><%= attachment_image_tag @post.user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size:'40x40' %>
-    <%= @post.user.name %></p>
-  <% end %>
-  <p><%= @post.body %></p>
-  <p><%= attachment_image_tag @post, :image, :fill, 60, 60 %></p>
-  <% if @post.liked_by?(current_user) %>
-    <%= link_to post_likes_path(@post), method: :delete do %>
-      <i class="fa fa-heart" aria-hidden="true" style="color: red;"><%= @post.likes.count %></i>
-      <!--area-hidden音声読み上げ-->
-    <% end %>
-  <% else %>
-    <%= link_to post_likes_path(@post), method: :post do %>
-      <i class="fa fa-heart" aria-hidden="true"><%= @post.likes.count %></i>
-    <% end %>
-  <% end %>
-  <p>コメント数:<%= @post.post_comments.count %></p>
-  <div class="badge badge badge-info">
-    タグ：<% @post_tags.each do |tag| %>
-      <%= link_to tag.name,search_tag_path(tag_id: tag.id)%>
-      <%="(#{tag.posts.count})" %>
-    <% end %>
-  </div>
-  <% if @post.user == current_user %>
-    <%= link_to "編集", edit_post_path(@post) %>
-    <%= link_to "削除", post_path(@post), method: :delete %>
-  <% end %>
-  <div>
-    <%= form_with(model:[@post,@post_comment], local: true) do|f| %>
-      <%= f.text_area :comment, rows:'5', placeholder: "ここにコメント" %>
-      <%= f.submit "送信" %>
-    <% end %>
-  </div>
-  <div>
-    <% @post.post_comments.each do |post_comment| %>
-      <p><%= attachment_image_tag post_comment.user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size:'40x40' %>
-      <%= post_comment.user.name %></p>
-      <%= post_comment.created_at.strftime('%Y/%m/%d') %>
-      <p><%= post_comment.comment %></p>
-      <% if post_comment.user == current_user %>
-        <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
+  <div class="col-8 offset-2">
+    <div class="border mt-3 mb-3">
+      <div class="offset-1"><%= l @post.created_at %></div>
+      <div class="row">
+        <div class="col-3 offset-2">
+          <%= link_to user_path(@post.user) do %>
+            <p><%= attachment_image_tag @post.user, :profile_image, :fill, 80, 80, fallback: "no_image.jpg", size:'80x80' %></p>
+            <p><%= @post.user.name %></p>
+          <% end %>
+        </div>
+        <div class="col-5 post">
+          <p><%= @post.body %></p>
+          <p><%= attachment_image_tag @post, :image, :fill, 200, 200 %></p>
+          <div>
+            <% @post_tags.each do |tag| %>
+              <div><i class="fas fa-tag"></i><%= link_to tag.name,search_tag_path(tag_id: tag.id)%></div>
+            <% end %>
+            <div class="d-flex">
+              <div class="like-btn">
+                <div class="like_btn_<%= @post.id %>">
+                  <%= render "likes/like", post: @post %>
+                </div>
+              </div>
+              <div class="offset-1">
+                コメント数:<%= @post.post_comments.count %>
+              </div>
+              <div class="offset-1">
+                <% if @post.user == current_user %>
+                  <%= link_to "", edit_post_path(@post), class: "fbtn btn fas fa-edit" %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="offset-2 mt-3 mb-3">
+        <%= form_with(model:[@post,@post_comment], local: true) do|f| %>
+          <div><%= f.text_area :comment, rows: "3", cols: "50", placeholder: "ここに入力" %></div>
+          <div class="offset-7"><%= f.submit "コメント", class: "btn btn-outline-success fas fa-pen" %></div>
+        <% end %>
+      </div>
+      <% @post.post_comments.reverse.each do |post_comment| %>
+        <div class="border-top">
+          <div class="offset-1 mt-3"><%= l post_comment.created_at %></div>
+          <div class="row">
+            <div class="col-3 offset-2">
+              <p><%= attachment_image_tag post_comment.user, :profile_image, :fill, 80, 80, fallback: "no_image.jpg", size:'80x80' %></p>
+              <p><%= post_comment.user.name %></p>
+            </div>
+            <div class="col-5">
+              <p><%= post_comment.comment %></p>
+              <% if post_comment.user == current_user %>
+                <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-outline-danger fas fa-trash" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>

@@ -6,6 +6,7 @@ class Post < ApplicationRecord
   has_many :tags,through: :post_tags
   has_many :notifications, dependent: :destroy
   attachment :image
+  validates :body, presence:true
 
   def liked_by?(user)
     likes.where(user_id: user.id).exists?
@@ -23,7 +24,7 @@ class Post < ApplicationRecord
       self.tags << new_post_tag
     end
   end
-  
+
   def create_notification_by(current_user)
     notification = current_user.active_notifications.new(
       post_id: id,

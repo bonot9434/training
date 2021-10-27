@@ -4,52 +4,54 @@
     <title>Give&Take</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
-<body>
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container">
-        <a class="navbar-brand" href="/">Give&Take</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div>
+  <body>
+    <header class="sticky-top">
+      <nav class="navbar navbar-light">
+        <div class="container">
+          <a class="navbar-brand text-light" href="/">Give&Take</a>
           <% if user_signed_in? %>
-            <%= render 'searches/search' %>
-          <% end %>
-        </div>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav ml-auto">
-            <% if user_signed_in? %>
-            <li class="nav-item">
-              <%= link_to 'Home', user_path(current_user.id), class: 'nav-link text-light' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'Users', users_content_path, class: 'nav-link text-light' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'Posts', posts_path, class: 'nav-link text-light' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "logout", destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "Notice",notifications_path, class: 'nav-link text-light' %>
-            </li>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <p class="nav-link text-light"><%= current_user.name %>さんでログイン中</p>
+              </li>
+              <li class="nav-item text-center">
+                <%= link_to 'MyPage', user_path(current_user.id), class: 'nav-link text-light' %>
+              </li>
+              <li class="nav-item text-center">
+                <%= link_to 'Users', users_path, class: 'nav-link text-light' %>
+              </li>
+              <li class="nav-item text-center">
+                <%= link_to 'Posts', posts_path, class: 'nav-link text-light' %>
+              </li>
+              <li class="nav-item text-center">
+                <% if unchecked_notifications.any? %>
+                  <%= link_to "Notice",notifications_path, class: 'nav-link text-light fas fa-bell' %>
+                <% else %>
+                  <%= link_to "Notice",notifications_path, class: 'nav-link text-light' %>
+                <% end %>
+              </li>
+              <li class="nav-item text-center">
+                <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
+              </li>
+            </ul>
             <% end %>
-          </ul>
+          </div>
         </div>
-      </div>
-    </nav>
-  </header>
-  <main>
-    <%= yield %>
-  </main>
-  <footer>
-  </footer>
-</body>
+      </nav>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
+    <div id="page_top"><i href="#" class="fas fa-chevron-circle-up"></i></div>
+    <footer class="text-center">
+    </footer>
+  </body>
 </html>

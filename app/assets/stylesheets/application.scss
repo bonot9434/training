@@ -18,38 +18,67 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
-// footer{
-//   width: 100%;
-//   height: 50px;
-//   text-align: center;
-//   position: absolute;/*←絶対位置*/
-//   bottom: 0; /*下に固定*/
-// }
+// ハンバーガーメニュー
+.navbar-light .navbar-toggler {
+ border-color: rgba(0,0,0,0);
+}
 
-// マイページタブ部分
-.tab {
-  width: 100%;
-  padding: 10px;
-  cursor: pointer;
-  border: solid 1px #CCC;
+.navbar-light .navbar-toggler-icon{
+  /* 三本線 */
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 255)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='3' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
-// タブがactiveのときのデザイン
-.tab-active {
-  color: #FFF;
-  background: #696969;
-  transition: all 0.2s ease-in-out;
+
+header {
+ background-color: #1e50a2;
 }
-// タブの中身、最初は非表示
-.tabbox {
-  display: none;
-  padding: 15px;
+
+// 全体に表示
+body {
+ display: flex;
+ flex-direction: column;
+ min-height: 100vh;
 }
-// box-showクラスのものだけ表示
-.box-show {
-  display: block;
+
+main {
+ margin-bottom: auto;
 }
-// hover時のアクション
-.tab:hover{
-  box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.5);
-  transform: translateY(-1px);
+
+footer {
+ color: white;
+ background-color: #1e50a2;
+ weight: 100%;
+ padding: 2%;
+}
+
+// スクロール、ページトップへ
+#page_top {
+ width: 50px;
+ height: 10px;
+ position: fixed;
+ right: 50px;
+}
+
+#page_top i::before{
+ font-weight: 900;
+ font-size: 50px;
+ color: #1e50a2;
+}
+
+
+.topbtn-up,
+.topbtn-in {
+  font-size: 30px;
+  border: 2px solid #ffffff;
+  border-radius: 0;
+  color: #ffffff;
+  background: #000000;
+  text-decoration: none;
+  padding: 3rem;
+}
+
+.topbtn-up:hover,
+.topbtn-in:hover {
+  color: #000000;
+  background: #ffffff;
+  text-decoration: none;
 }
