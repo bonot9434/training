@@ -32,7 +32,9 @@
   position: fixed;
   right: 50px;
   top: 100px;
-  text-decoration: none;
   color: #1e50a2;
 }
 
+.postbtn:hover {
+  transform:scale(1.2,1.2);
+}

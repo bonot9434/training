@@ -9,7 +9,7 @@
       <div class="mt-2"><%= f.label "画像" %></div>
       <div><%= f.attachment_field :image %></div>
       <img id="preview" style="width:40%;">
-      <script>
+      <script class="mt-3 mb-3">
         $('#post_image').on('change', function (e) {
         var reader = new FileReader();
         reader.onload = function (e) {
