@@ -25,7 +25,7 @@
 
 .navbar-light .navbar-toggler-icon{
   /* 三本線 */
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 255)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='3' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+ background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 255)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='3' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
 header {
@@ -65,20 +65,39 @@ footer {
 }
 
 
-.topbtn-up,
-.topbtn-in {
-  font-size: 30px;
-  border: 2px solid #ffffff;
-  border-radius: 0;
-  color: #ffffff;
-  background: #000000;
-  text-decoration: none;
-  padding: 3rem;
+// .topbtn-up,
+// .topbtn-in {
+//   font-size: 30px;
+//   border: 2px solid #ffffff;
+//   border-radius: 0;
+//   color: #ffffff;
+//   background: #000000;
+//   text-decoration: none;
+//   padding: 3rem;
+// }
+
+// .topbtn-up:hover,
+// .topbtn-in:hover {
+//   color: #000000;
+//   background: #ffffff;
+//   text-decoration: none;
+// }
+
+// リンク下線なし
+a {
+ color: #000;
+ text-decoration: none;
 }
 
-.topbtn-up:hover,
-.topbtn-in:hover {
-  color: #000000;
-  background: #ffffff;
-  text-decoration: none;
+a:hover {
+ text-decoration: none;
+}
+
+// タグの色」
+.fa-tag {
+ color: #1e50a2;
+}
+
+.icon {
+ border-radius: 50%;
 }

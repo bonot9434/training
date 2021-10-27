@@ -34,3 +34,14 @@
   box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.5);
   transform: translateY(-1px);
 }
+
+.asc:after{
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: " \f0de";
+}
+
+.desc:after{
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: " \f0dd";}

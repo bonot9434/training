@@ -5,7 +5,7 @@
       <div><%= f.label "Name" %></div>
       <div><%= f.text_field :name, required: true, class: "col-6" %></div>
       <div class="mt-2"><%= f.label "Icon" %></div>
-      <div><%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %></div>
+      <div class="icon"><%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %></div>
       <div class="mt-2"><%= f.label "Introducion" %></div>
       <div><%= f.text_area :introduction, rows: "2" , class: "col-12" %></div>
       <div class="mt-2"><%= f.label "Give" %></div>

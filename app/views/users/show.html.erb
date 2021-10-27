@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-2 offset-1 pt-3">
-      <%= attachment_image_tag @user, :profile_image, :fill, 120, 120, fallback: "no_image.jpg", size:'120x120' %>
+      <p><%= attachment_image_tag @user, :profile_image, :fill, 120, 120, fallback: "noimage.png", size:'120x120', class: "icon" %></p>
       <% unless @user.id == current_user.id %>
         <% if @roomId.blank? %>
           <%= form_with model: @room, local: true do |f|%>
