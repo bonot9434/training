@@ -15,6 +15,7 @@ class UsersController < ApplicationController
       @room = Room.new
       @RoomUser = RoomUser.new
     end
+    @current_user_like_list = current_user == @user
   end
 
   def index

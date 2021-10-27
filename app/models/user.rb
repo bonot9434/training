@@ -28,7 +28,6 @@ class User < ApplicationRecord
 
   validates :name, presence:true
 
-
   def follow(user_id)
     relationships.create(followed_id: user_id)
   end
