@@ -12,11 +12,12 @@
       <nav class="navbar navbar-light">
         <div class="container">
           <a class="navbar-brand text-light" href="/">Give&Take</a>
+          <% if user_signed_in? %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <% if user_signed_in? %>
+
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
                 <p class="nav-link text-light"><%= current_user.name %>さんでログイン中</p>
@@ -51,7 +52,6 @@
     </main>
     <div id="page_top"><i href="#" class="fas fa-chevron-circle-up"></i></div>
     <footer class="text-center">
-      <p>Give&Take</p>
     </footer>
   </body>
 </html>
