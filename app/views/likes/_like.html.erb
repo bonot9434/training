@@ -4,7 +4,7 @@
   <% end %>
 <% else %>
   <%= link_to post_likes_path(post, current_user_like_list: current_user_like_list), method: :post, remote: true do %>
-    <i class="fa fa-heart" aria-hidden="true"><%= post.likes.count %></i>
+    <i class="fa fa-heart iine" aria-hidden="true"><%= post.likes.count %></i>
   <% end %>
 <% end %>
 

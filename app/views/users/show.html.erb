@@ -14,7 +14,7 @@
       <% end %>
       <% if @user == current_user %>
         <p class="mt-3"><%= link_to "DM一覧", rooms_path, class: "btn btn-outline-success" %></p>
-        <p><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-outline-primary"  %></p>
+        <p><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-outline-primary text-nowrap"  %></p>
       <% else %>
         <div class="follow-btn mt-3">
           <% if current_user.following?(@user) %>
@@ -75,13 +75,13 @@
   </ul>
   <!--タブで選択された要素部分-->
   <div class="tabbox-contents">
-    <div class="col-8 offset-2 tabbox box-show">
+    <div class="col-xs-8 tabbox box-show">
       <%= render 'posts/post', posts: @posts, current_user_like_list: @current_user_like_list %>
     </div>
-    <div class="col-8 offset-2 tabbox">
+    <div class="col-xs-8 tabbox">
       <%= render 'posts/post', posts: @follow_post, current_user_like_list: @current_user_like_list %>
     </div>
-    <div class="col-8 offset-2 tabbox" id="like_posts_list">
+    <div class="col-xs-8 tabbox" id="like_posts_list">
       <%= render 'posts/post_like', posts: @like_post, current_user_like_list: @current_user_like_list %>
     </div>
   </div>
