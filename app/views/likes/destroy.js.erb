@@ -1,2 +1,5 @@
-$("#post-<%=@post.id%>").remove();
-$(".like_btn_<%= @post.id %>").html("<%= j(render "likes/like", post: @post ) %>");
+<% if @current_user_like_list %>
+  $("#post-<%=@post.id%>").remove();
+<% else %>
+  $(".like_btn_<%= @post.id %>").html("<%= j(render "likes/like", post: @post, current_user_like_list: @current_user_like_list ) %>");
+<% end %>

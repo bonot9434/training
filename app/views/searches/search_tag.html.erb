@@ -1,15 +1,15 @@
 <div class="container">
   <div class="row">
     <div class="col-2" style="line-height:2rem" >
-      <p class="h7 font-weight-bold mt-3 text-nowrap">投稿が多いタグ</p>
+      <p class="h7 font-weight-bold mt-3 text-nowrap">Postが多い<i class="fas fa-tag"></i></p>
       <% @tag_rank.each do |tr| %>
         <div><%= link_to tr.name, search_tag_path(tag_id: tr.id) %>
         <%="(#{tr.posts.count})" %></div>
       <% end %>
     </div>
     <div class="col-8">
-      <h3 class="mt-3">タグが<%=@tag.name.truncate(10) %>の投稿</h3>
-      <%= render 'posts/post', posts: @tag_posts %>
+      <h3 class="mt-3"><i class="fas fa-tag"></i><%=@tag.name.truncate(10) %>のPost</h3>
+      <%= render 'posts/post', posts: @tag_posts, current_user_like_list: @current_user_like_list %>
     </div>
   </div>
 </div>

@@ -17,29 +17,28 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
-
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
                 <p class="nav-link text-light"><%= current_user.name %>さんでログイン中</p>
               </li>
-              <li class="nav-item text-center">
-                <%= link_to 'MyPage', user_path(current_user.id), class: 'nav-link text-light' %>
+              <li class="nav-item text-center header-container">
+                <%= link_to 'MyPage', user_path(current_user.id), class: 'nav-link text-light header-title' %>
               </li>
-              <li class="nav-item text-center">
-                <%= link_to 'Users', users_path, class: 'nav-link text-light' %>
+              <li class="nav-item text-center header-container">
+                <%= link_to 'Users', users_path, class: 'nav-link text-light header-title' %>
               </li>
-              <li class="nav-item text-center">
-                <%= link_to 'Posts', posts_path, class: 'nav-link text-light' %>
+              <li class="nav-item text-center header-container">
+                <%= link_to 'Posts', posts_path, class: 'nav-link text-light header-title' %>
               </li>
-              <li class="nav-item text-center">
+              <li class="nav-item text-center header-container">
                 <% if unchecked_notifications.any? %>
-                  <%= link_to "Notice",notifications_path, class: 'nav-link text-light fas fa-bell' %>
+                  <%= link_to "Notice",notifications_path, class: 'nav-link text-light fas fa-bell header-title' %>
                 <% else %>
-                  <%= link_to "Notice",notifications_path, class: 'nav-link text-light' %>
+                  <%= link_to "Notice",notifications_path, class: 'nav-link text-light header-title' %>
                 <% end %>
               </li>
-              <li class="nav-item text-center">
-                <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
+              <li class="nav-item text-center header-container">
+                <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'nav-link text-light header-title' %>
               </li>
             </ul>
             <% end %>

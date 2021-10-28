@@ -14,6 +14,7 @@ class LikesController < ApplicationController
     like.destroy
     @likes = current_user.like_posts.pluck(:id)
     @like_post = Post.where(id: @likes)
+    @current_user_like_list = params[:current_user_like_list] == 'true'
   end
 
 end

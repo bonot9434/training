@@ -30,9 +30,26 @@
 .postbtn {
   font-size: 3em;
   position: fixed;
-  right: 50px;
+  right: 100px;
   top: 100px;
-  text-decoration: none;
   color: #1e50a2;
 }
 
+.postbtn:hover {
+  transform:scale(1.2,1.2);
+}
+
+.tagrank {
+  position: relative;
+  padding: 1rem 1rem 0 1rem;
+  border-bottom: 6px solid #1e50a2;
+}
+
+.tagrank:before {
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 20%;
+  height: 6px;
+  content: '';
+}
