@@ -4,12 +4,12 @@
       <%= l post.created_at %>
     </div>
     <div class="d-flex">
-      <div class="col-2 offset-2 mt-2">
+      <div class="col-sm-2 offset-2 mt-2">
         <%= link_to user_path(post.user) do %>
           <p><%= attachment_image_tag post.user, :profile_image, :fill, 80, 80, fallback: "noimage.png", size:'80x80', class: "icon" %></p>
         <% end %>
       </div>
-      <div class="col-6 offset-1">
+      <div class="col-sm-6 offset-1">
         <p><%= post.user.name %></p>
         <%= link_to post_path(post.id) do %>
           <p class="post"><%= post.body %></p>

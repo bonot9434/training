@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-3">
+    <div class="col-sm-3">
       <h5 class="mt-3">DM User</h5>
       <% @dm_users.each do |dmuser| %>
         <%= link_to room_path(current_user.get_room_id(dmuser)) do %>
@@ -10,7 +10,7 @@
     </div>
     <hr>
     <% if @room.present? %>
-    <div class="col-9">
+    <div class="col-sm-9">
       <h3 class="mt-3">Messages</h3>
       <div class="mt-3 mb-3">
       <%= form_with model: @message, local: true do |f| %>

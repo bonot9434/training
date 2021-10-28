@@ -5,22 +5,22 @@
     <%= render "devise/shared/error_messages", resource: resource %>
     <div class="field">
       <%= f.label :name %><br />
-      <%= f.text_field :name, autofocus: true, class: "col-6" %>
+      <%= f.text_field :name, autofocus: true, class: "col-sm-6" %>
     </div>
     <div class="field">
       <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-6"  %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-sm-6"  %>
     </div>
     <div class="field">
       <%= f.label :password %>
       <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
       <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password", class: "col-6" %>
+      <%= f.password_field :password, autocomplete: "new-password", class: "col-sm-6" %>
     </div>
     <div class="field">
       <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "col-6" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "col-sm-6" %>
     </div>
     <div class="actions mt-3 mb-3">
       <%= f.submit "Sign up", class: "btn btn-outline-info mt-3 col-2 offset-2" %>

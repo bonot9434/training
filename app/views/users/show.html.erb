@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-2 offset-1 pt-3">
+    <div class="col-sm-2 offset-1 pt-3">
       <p><%= attachment_image_tag @user, :profile_image, :fill, 120, 120, fallback: "noimage.png", size:'120x120', class: "icon" %></p>
       <% unless @user.id == current_user.id %>
         <% if @roomId.blank? %>
@@ -25,38 +25,40 @@
         </div>
       <% end %>
     </div>
-    <div class="col-8 offset-1">
-      <div class="pt-5 pb-3 name"><strong><%= @user.name %></strong></div>
-      <div class="d-flex">
-        <p class="col-3"><%= link_to "フォロー", user_followings_path(@user) %></p>
-        <p><%= @user.followings.count %></p>
-      </div>
-      <div class="d-flex">
-        <p class="col-3"><%= link_to "フォロワー",user_followers_path(@user) %></p>
-        <p><%= @user.followers.count %></p>
-      </div>
-      <div class="d-flex">
-        <p class="col-3"><%= link_to "業界", industry_path %></p>
-        <p><%= @user.industry.name %></p>
-      </div>
-      <div class="d-flex">
-        <p class="col-3"><%= link_to "勤務地", map_path %></p>
-        <p><%= @user.prefecture.name %></p>
+    <div class="col-sm-8 offset-1">
+      <div class="pt-5 pb-5 name"><strong><%= @user.name %></strong></div>
+      <div class="user_de col-8">
+        <div class="row">
+          <div class="col-sm-4 col-lg-3 text-nowrap"><%= link_to "フォロー", user_followings_path(@user) %></div>
+          <div class="offset-1"><%= @user.followings.count %></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4 col-lg-3 text-nowrap"><%= link_to "フォロワー",user_followers_path(@user) %></div>
+          <div class="offset-1 text-center"><%= @user.followers.count %></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4 col-lg-3 text-nowrap"><%= link_to "業界", industry_path %></div>
+          <div class="offset-1"><%= @user.industry.name %></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4 col-lg-3 text-nowrap"><%= link_to "勤務地", map_path %></div>
+          <div class="offset-1"><%= @user.prefecture.name %></div>
+        </div>
       </div>
     </div>
   </div>
-  <table class="table col-10 offset-1 mt-4">
+  <table class="table table-sm col-sm-10 offset-1 mt-4">
     <thead>
       <tr>
-        <th class="col-1 align-top">Give</th>
+        <th class="col-sm-2 user_gti">Give</th>
         <th><%= @user.give %></th>
       </tr>
       <tr>
-        <th class="col-1 align-top">Take</th>
+        <th class="col-sm-2 user_gti">Take</th>
         <th><%= @user.take %></th>
       </tr>
       <tr>
-        <th class="col-1 align-top">introduction</th>
+        <th class="col-sm-2 user_gti">Introduction</th>
         <th><%= @user.introduction %></th>
       </tr>
     </thead>
@@ -75,13 +77,13 @@
   </ul>
   <!--タブで選択された要素部分-->
   <div class="tabbox-contents">
-    <div class="col-xs-8 tabbox box-show">
+    <div class="col-sm-10 offset-1 tabbox box-show">
       <%= render 'posts/post', posts: @posts, current_user_like_list: @current_user_like_list %>
     </div>
-    <div class="col-xs-8 tabbox">
+    <div class="col-sm-10 offset-1 tabbox">
       <%= render 'posts/post', posts: @follow_post, current_user_like_list: @current_user_like_list %>
     </div>
-    <div class="col-xs-8 tabbox" id="like_posts_list">
+    <div class="col-sm-10 offset-1 tabbox" id="like_posts_list">
       <%= render 'posts/post_like', posts: @like_post, current_user_like_list: @current_user_like_list %>
     </div>
   </div>
