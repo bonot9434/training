@@ -24,9 +24,16 @@
               <li class="nav-item text-center header-container">
                 <%= link_to 'MyPage', user_path(current_user.id), class: 'nav-link text-light header-title' %>
               </li>
-              <li class="nav-item text-center header-container">
-                <%= link_to 'Users', users_path, class: 'nav-link text-light header-title' %>
-              </li>
+              <div class="accordion-container">
+                <div class="accordion-title js-accordion-title header-container text-center">
+                  <li class="nav-item nav-link text-light header-title">Users</li>
+                </div>
+                <div class="accordion-content">
+                  <div><%= link_to 'AllUsers', users_path, class: 'nav-link text-light text-center' %></div>
+                  <div><%= link_to 'PrefectureUsers', map_path, class: 'nav-link text-light text-center' %></div>
+                  <div><%= link_to 'IndustryUsers', industry_path, class: 'nav-link text-light text-center' %></div>
+                </div>
+              </div>
               <li class="nav-item text-center header-container">
                 <%= link_to 'Posts', posts_path, class: 'nav-link text-light header-title' %>
               </li>
