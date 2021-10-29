@@ -2,12 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.top_back {
+  color: white;
+  background-color: #1e50a2;
+  height: 100vh;
+}
 
 .title {
   font-size: 60px;
   font-family: arial black;
   text-align: center;
-  padding: 2%;
+  padding: 5%;
 }
 
 .top {
