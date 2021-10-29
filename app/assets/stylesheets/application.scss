@@ -18,6 +18,12 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+// サインアップ、ログイン画面
+.sign_log:first-letter {
+  font-size: 1.5em;
+  color: #1e50a2;
+}
+
 // ハンバーガーメニュー
 .navbar-light .navbar-toggler {
  border-color: rgba(0,0,0,0);
@@ -120,6 +126,8 @@ a:hover {
  color: #1e50a2;
 }
 
+// プロフィール画像
 .icon {
  border-radius: 50%;
 }
+
