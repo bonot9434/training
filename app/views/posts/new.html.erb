@@ -5,6 +5,24 @@
       <div class="mt-2"><%= f.label "本文" %></div>
       <div><%= f.text_area :body, rows: "4", class: "col-12" %></div>
       <div><%= f.label"タグ" %></div>
+      <div class='check_box'>
+        <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+          <div>
+            <%= tag.label class: 'form-check-label' do %>
+              <%= tag.check_box class: 'form-check-input' %>
+              <%= tag.text %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <div class="spot_field">
+        <% %w(Give Take).each.with_index do |tag, i| %>
+        <label>
+        <%= f.check_box :name, { multiple: true }, tag, nil %>
+        <%= tag %>
+        </label>
+        <% end %>
+      </div>
       <div><%= f.text_field :name, data: {role: "tagsinput"}%></div>
       <div class="mt-2"><%= f.label "画像" %></div>
       <div><%= f.attachment_field :image %></div>

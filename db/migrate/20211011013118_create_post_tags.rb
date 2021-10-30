@@ -6,7 +6,5 @@ class CreatePostTags < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
-    # 同じタグを２回保存出来ないようにする
-    add_index :post_tags, [:post_id, :tag_id], unique: true
   end
 end

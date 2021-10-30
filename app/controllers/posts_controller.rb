@@ -21,12 +21,24 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
     # タグを","で区切って配列
     tag_list = params[:post][:name].split(',')
-    if @post.save
+    # tag_list_ids = params[:post][:tag_ids]
+  #byebug
+    # if 
+      @post.save
+      # tag_list_ids.each do |tag_id|
+      #   if tag_id.present?
+      #     post_tag = PostTag.new
+      #     post_tag.post_id = @post.id
+      #     post_tag.tag_id = tag_id
+      #     post_tag.save
+      #   end
+      # end
+      # byebug
       @post.save_tag(tag_list)
       redirect_to posts_path(@post)
-    else
-      render:new
-    end
+    # else
+    #   render:new
+    # end
   end
 
   def edit
@@ -53,7 +65,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:body, :image)
+    params.require(:post).permit(:body, :image, tag_ids: [])
   end
 
 end
