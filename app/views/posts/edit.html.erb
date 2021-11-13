@@ -1,15 +1,15 @@
 <div class="container">
-  <div class="col-6 offset-3">
+  <div class="col-sm-6 offset-3">
     <h1 class="mt-3">Edit</h1>
     <%= form_with model: @post, local:true do |f| %>
       <div class="mt-2"><%= f.label "本文" %></div>
-      <div><%= f.text_area :body, rows: "4" , class: "col-12" %></div>
+      <div><%= f.text_area :body, rows: "4", required: true, class: "col-12" %></div>
       <div><%= f.label"タグ" %></div>
-      <div><%= f.text_field :name,value: @tag_list, data: {role: "tagsinput"}%></div>
+      <div><%= f.text_field :name, value: @tag_list, data: {role: "tagsinput"}%></div>
       <div class="mt-2"><%= f.label "画像" %></div>
       <div><%= f.attachment_field :image %></div>
       <img id="preview" style="width:40%;">
-      <script>
+      <script class="mt-3 mb-3">
         $('#post_image').on('change', function (e) {
         var reader = new FileReader();
         reader.onload = function (e) {
@@ -18,10 +18,9 @@
         reader.readAsDataURL(e.target.files[0]);
         });
       </script>
-      <div><%= f.check_box :remove_image %>画像を削除する</div>
       <div class="mt-5">
-        <%= f.submit "編集完了", class: "btn btn-outline-secondary fas fa-edit offset-3"  %>
-        <%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-outline-secondary fas fa-trash offset-2" %>
+        <%= f.submit "編集完了", class: "btn btn-outline-success fas fa-edit offset-3"  %>
+        <%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-outline-danger fas fa-trash offset-2" %>
       </div>
     <% end %>
   </div>

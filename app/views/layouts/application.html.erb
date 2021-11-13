@@ -9,29 +9,43 @@
   </head>
   <body>
     <header class="sticky-top">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav class="navbar navbar-light">
         <div class="container">
-          <a class="navbar-brand" href="/">Give&Take</a>
+          <a class="navbar-brand text-light" href="/">Give&Take</a>
+          <% if user_signed_in? %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <% if user_signed_in? %>
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
-                <%= link_to 'Home', user_path(current_user.id), class: 'nav-link text-light' %>
+                <p class="nav-link text-light"><%= current_user.name %>さんでログイン中</p>
               </li>
-              <li class="nav-item">
-                <%= link_to 'Users', users_content_path, class: 'nav-link text-light' %>
+              <li class="nav-item text-center header-container">
+                <%= link_to 'MyPage', user_path(current_user.id), class: 'nav-link text-light header-title' %>
               </li>
-              <li class="nav-item">
-                <%= link_to 'Posts', posts_path, class: 'nav-link text-light' %>
+              <div class="accordion-container">
+                <div class="accordion-title js-accordion-title header-container text-center">
+                  <li class="nav-item nav-link text-light header-title">Users</li>
+                </div>
+                <div class="accordion-content">
+                  <div><%= link_to 'AllUsers', users_path, class: 'nav-link text-light text-center' %></div>
+                  <div><%= link_to 'IndustryUsers', industry_path, class: 'nav-link text-light text-center' %></div>
+                  <div><%= link_to 'PrefectureUsers', map_path, class: 'nav-link text-light text-center' %></div>
+                </div>
+              </div>
+              <li class="nav-item text-center header-container">
+                <%= link_to 'Posts', posts_path, class: 'nav-link text-light header-title' %>
               </li>
-              <li class="nav-item">
-                <%= link_to "logout", destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
+              <li class="nav-item text-center header-container">
+                <% if unchecked_notifications.any? %>
+                  <%= link_to "Notice",notifications_path, class: 'nav-link text-light fas fa-bell header-title' %>
+                <% else %>
+                  <%= link_to "Notice",notifications_path, class: 'nav-link text-light header-title' %>
+                <% end %>
               </li>
-              <li class="nav-item">
-                <%= link_to "Notice",notifications_path, class: 'nav-link text-light' %>
+              <li class="nav-item text-center header-container">
+                <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'nav-link text-light header-title' %>
               </li>
             </ul>
             <% end %>
@@ -43,8 +57,7 @@
       <%= yield %>
     </main>
     <div id="page_top"><i href="#" class="fas fa-chevron-circle-up"></i></div>
-    <footer class="text-center  bg-dark">
-      <p>Give&Take</p>
+    <footer class="text-center">
     </footer>
   </body>
 </html>

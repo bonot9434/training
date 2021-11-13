@@ -1,4 +1,5 @@
 class RoomsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @dm_users = current_user.get_dm_users
@@ -9,7 +10,7 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id])
     if @room.present?
       if RoomUser.where(user_id: current_user.id, room_id: @room.id).present?
-        @messages = @room.messages
+        @messages = @room.messages.order(id: "DESC")
         @message = Message.new
         @RoomUsers = @room.room_users
       else

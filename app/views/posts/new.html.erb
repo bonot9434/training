@@ -1,9 +1,9 @@
 <div>
-  <div class="col-6 offset-3">
+  <div class="col-sm-6 offset-3">
     <h1 class="mt-3">New</h1>
     <%= form_with model: @post, local:true do |f| %>
       <div class="mt-2"><%= f.label "本文" %></div>
-      <div><%= f.text_area :body, rows: "4", class: "col-12" %></div>
+      <div><%= f.text_area :body, rows: "4", required: true, class: "col-12" %></div>
       <div><%= f.label"タグ" %></div>
       <div class='check_box'>
         <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
@@ -15,26 +15,19 @@
           </div>
         <% end %>
       </div>
-      <div class="spot_field">
-        <% %w(Give Take).each.with_index do |tag, i| %>
-        <label>
-        <%= f.check_box :name, { multiple: true }, tag, nil %>
-        <%= tag %>
-        </label>
-        <% end %>
-      </div>
+      <!--<div class="spot_field">-->
+      <!--  <%# %w(Give Take).each.with_index do |tag, i| %>-->
+      <!--  <label>-->
+      <!--  <%#= f.check_box :name, { multiple: true }, tag, nil %>-->
+      <!--  <%#= tag %>-->
+      <!--  </label>-->
+      <!--  <%# end %>-->
+      <!--</div>-->
       <div><%= f.text_field :name, data: {role: "tagsinput"}%></div>
       <div class="mt-2"><%= f.label "画像" %></div>
       <div><%= f.attachment_field :image %></div>
       <div>
-      <%= f.submit "投稿", class: "btn btn-outline-secondary fas fa-pen col-4 offset-4 mt-5" %>
+      <%= f.submit "投稿", class: "btn btn-outline-success fas fa-pen col-4 offset-4 mt-5" %>
     <% end %>
   </div>
 </div>
-
-<i class="fas fa-pen"></i>
-<i class="fas fa-tag"></i>
-<i class="far fa-trash-alt"></i>
-<i class="fas fa-user"></i>
-<i class="fas fa-edit"></i>
-<i class="fas fa-reply"></i>

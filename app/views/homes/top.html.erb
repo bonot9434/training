@@ -7,16 +7,23 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body class="top">
-    <div class="title">
-      <div class="title-give">Give</div>
-      <div class="title-half" data-content="&">&</div>
-      <div class="title-take">Take</div>
-    </div>
-    <p>アイウエオ</p>
-    <div class="topbtn">
-      <div><%= link_to "会員登録", new_user_registration_path, class: "topbtn-up" %></div>
-      <div><%= link_to "Sign_in", new_user_session_path, class: "topbtn-in"  %></div>
+  <body>
+    <div class="top_back">
+      <div>
+        <h1 class="title">Give & Take</h1>
+        <p class="top">ようこそGive&Takeへ。<br >
+        日々の営業活動の中で人脈を広げたいと思っている方は多いのではないでしょうか。<br >
+        このサイトは気軽に多くの方とビジネスや情報のGive&Takeをすることを目的としています。<br >
+        「Give」と「Take」を登録することができるため、<br >
+        ユーザーがどのような情報を持ち、どのような情報を求めているのかが一目で分かります。<br >
+        情報を「Give」することで新たな人脈を広げることができ、<br >
+        情報を「Take」することで日頃の営業活動に活かすこともできます。<br >
+        </p>
+      </div>
+      <div class="top-btn">
+        <div class="btn-up"><%= link_to "Sign_Up",new_user_registration_path, class: "btn btn-outline-light btn-lg" %></div>
+        <div class="btn-in"><%= link_to "Log_In",new_user_session_path, class: "btn btn-outline-light btn-lg" %></div>
+      </div>
     </div>
   </body>
 </html>

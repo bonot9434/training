@@ -26,6 +26,7 @@ class User < ApplicationRecord
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :industry
 
+  validates :name, presence:true
 
   def follow(user_id)
     relationships.create(followed_id: user_id)

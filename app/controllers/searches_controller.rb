@@ -12,7 +12,7 @@ class SearchesController < ApplicationController
     end
     render "users/index"
   end
-  
+
   def followings_search
     @user = User.find(params[:user_id])
     @model = params[:model]
@@ -45,6 +45,7 @@ class SearchesController < ApplicationController
     @tag_list = Tag.all.order(name: "ASC")
     @tag = Tag.find(params[:tag_id])
     @tag_posts = @tag.posts
+    @tag_rank = Tag.find(PostTag.group(:tag_id).order('count(tag_id) desc').limit(10).pluck(:tag_id))
   end
 
 end

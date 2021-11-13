@@ -4,13 +4,12 @@
 
 // プロフィール欄
 .name {
-  font-size: 30px;
-  padding: 10%;
+  font-size: 20px;
 }
 
-// プロフィール欄
-.name {
-  font-size: 30px;
+.user_gti:first-letter {
+  font-size: 1.5em;
+  color: #1e50a2;
 }
 
 // マイページタブ部分
@@ -23,7 +22,7 @@
 // タブがactiveのときのデザイン
 .tab-active {
   color: #FFF;
-  background: #696969;
+  background: #1e50a2;
   transition: all 0.2s ease-in-out;
 }
 // タブの中身、最初は非表示
@@ -40,3 +39,16 @@
   box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.5);
   transform: translateY(-1px);
 }
+
+// ユーザー一覧ソート
+.asc:after{
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: " \f0de";
+}
+
+.desc:after{
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: " \f0dd";}
+

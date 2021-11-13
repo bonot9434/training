@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :identification, only: [:edit]
 
   def show
     @user = User.find(params[:id])
@@ -9,10 +11,11 @@ class UsersController < ApplicationController
     @like_post = Post.where(id: @likes)
     @receiveUser = User.find(@user.id) #DM機能
     @roomId = current_user.get_room_id(@receiveUser)
-      if @roomId.blank?
-         @room = Room.new
-         @RoomUser = RoomUser.new
-      end
+    if @roomId.blank?
+      @room = Room.new
+      @RoomUser = RoomUser.new
+    end
+    @current_user_like_list = current_user == @user
   end
 
   def index
@@ -42,6 +45,14 @@ class UsersController < ApplicationController
 
 
   private
+
+  def identification
+    user = User.find(params[:id])
+    if user != current_user
+      redirect_to user_path
+    end
+  end
+
 
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image, :give, :take, :industry_id, :prefecture_id)

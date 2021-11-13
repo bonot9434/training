@@ -1,5 +1,5 @@
 class PostCommentsController < ApplicationController
-  
+
   def create
     @post = Post.find(params[:post_id])
     @post_comment = current_user.post_comments.new(post_comment_params)
@@ -8,8 +8,8 @@ class PostCommentsController < ApplicationController
       @post.create_notification_by(current_user)
       redirect_to post_path(@post)
     else
-       @user = @post.user
-       render "posts/show"
+      @user = @post.user
+      redirect_to post_path(@post)
     end
   end
 
@@ -23,5 +23,5 @@ class PostCommentsController < ApplicationController
   def post_comment_params
     params.require(:post_comment).permit(:comment)
   end
-  
+
 end
